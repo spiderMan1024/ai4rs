@@ -108,8 +108,4 @@ url={https://openreview.net/forum?id=gZ9hCDWe6ke}
 
 ## Acknowledgement
 
-This project refactors [RHINO](https://github.com/SIAnalytics/RHINO). The author of [RHINO](https://github.com/SIAnalytics/RHINO) is [Hakjin Lee](https://github.com/nijkah).
 
-[Hakjin Lee](https://github.com/nijkah)
-
-[RHINO](https://github.com/SIAnalytics/RHINO)
