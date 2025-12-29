@@ -35,11 +35,8 @@ ai4rs
 ├── data
 │   ├── ReCon1M
 │   │   ├── dataset_split.json
-│   │   ├── images.zip
-│   │   ├── labelTxt.zip
-│   │   ├── rearrange_dataset.py
-│   │   ├── Recon1m_info.json
-│   │   ├── relTxt.zip
+│   │   ├── images (22262 png)
+│   │   ├── labelTxt (22262 txt)
 ```
 
 
