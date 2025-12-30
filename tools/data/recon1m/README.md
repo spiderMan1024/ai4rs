@@ -97,7 +97,7 @@ ai4rs
 │   │   │   ├── annfiles (25025 txt)
 ```
 
-Please change `data_root` in `configs/_base_/datasets/dota.py` to `data/split_ss_dota`.
+Please change `data_root` in `configs/_base_/datasets/recon1m.py` to `data/split_ss_recon1m/`.
 
 ## Classes of ReCon1M
 
