@@ -34,11 +34,70 @@ ai4rs
 ├── configs
 ├── data
 │   ├── ReCon1M
-│   │   ├── dataset_split.json
+│   │   ├── dataset_split.json (including train 11131, val 3710, test 7421)
 │   │   ├── images (22262 png)
 │   │   ├── labelTxt (22262 txt)
 ```
 
+
+## split dota dataset
+
+Please crop the original images into 800x800 patches with an overlap of 400 by run
+
+train set
+
+```shell
+python tools/data/recon1m/split/img_split.py --base-json tools/data/recon1m/split/split_configs/ss_train.json
+```
+
+val set
+
+```shell
+ python tools/data/recon1m/split/img_split.py --base-json tools/data/recon1m/split/split_configs/ss_val.json
+```
+
+test set
+
+```shell
+python tools/data/recon1m/split/img_split.py --base-json tools/data/recon1m/split/split_configs/ss_test.json
+```
+
+trainval set
+```shell
+python tools/data/recon1m/split/img_split.py --base-json tools/data/recon1m/split/split_configs/ss_trainval.json
+```
+
+trainvaltest set
+```shell
+python tools/data/recon1m/split/img_split.py --base-json tools/data/recon1m/split/split_configs/ss_trainvaltest.json
+```
+
+Please update the `img_dirs` and `ann_dirs` in json.
+
+The new data structure is as follows:
+
+```none
+ai4rs
+├── mmrotate
+├── tools
+├── configs
+├── data
+│   ├── split_ss_recon1m
+│   │   ├── trainval
+│   │   │   ├── images
+│   │   │   ├── annfiles
+│   │   ├── train
+│   │   │   ├── images (36879 png)
+│   │   │   ├── annfiles (36879 txt)
+│   │   ├── val
+│   │   │   ├── images (13120 png)
+│   │   │   ├── annfiles (13120 txt)
+│   │   ├── test
+│   │   │   ├── images (25025 png)
+│   │   │   ├── annfiles (25025 txt)
+```
+
+Please change `data_root` in `configs/_base_/datasets/dota.py` to `data/split_ss_dota`.
 
 ## Classes of ReCon1M
 
@@ -60,7 +119,7 @@ ReCon1M is the first million-level relation annotation dataset specifically desi
 [Paper link](https://arxiv.org/pdf/2406.06028)
 
 <div align=center>
-<img src="https://recon1m-dataset.github.io/images/example.png" />
+<img src="https://simg.baai.ac.cn/papers/converted_page_79aa4d769f389bde979f986e27ac5260-03.jpg?x-oss-process=image/format,jpg/interlace,1" />
 </div>
 
 
