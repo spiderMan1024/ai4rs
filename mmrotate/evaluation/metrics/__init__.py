@@ -4,7 +4,6 @@ from .rotated_coco_metric import RotatedCocoMetric
 from .icdar2015_metric import ICDAR2015Metric
 from .coco_metric_sardet_100k import CocoMetricSARDet100k
 from .fair_metric import FAIRMetric
-from .star_metric import STARMetric
 
 __all__ = ['DOTAMetric', 'RotatedCocoMetric', 'ICDAR2015Metric',
-           'CocoMetricSARDet100k', 'FAIRMetric', 'STARMetric']
+           'CocoMetricSARDet100k', 'FAIRMetric']
