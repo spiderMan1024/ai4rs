@@ -206,10 +206,10 @@ Please refer to [data_preparation.md](tools/data/README.md) to prepare the data
 
 |     |     |     |     |
 | :---: | :---: | :---: | :---: |
-| [DOTA](./tools/data/dota/README.md) | [DIOR](./tools/data/dior/README.md) |  [SSDD](./tools/data/ssdd/README.md) |  [HRSC](./tools/data/hrsc/README.md)   |   
-| [HRSID](./tools/data/hrsid/README.md) | [SRSDD](./tools/data/srsdd/README.md) | [RSDD](./tools/data/rsdd/README.md)  |  [ICDAR2015](./tools/data/icdar2015/README.md)   |  
-| [SARDet 100K](./tools/data/sardet_100k/README.md) | [RSAR](./tools/data/rsar/README.md) | [FAIR1M](./tools/data/fair/README.md)  | [STAR](./tools/data/star/README.md)    |    
-| [ReCon1M](./tools/data/recon1m/README.md)    |  [CODrone](./tools/data/codrone/README.md)   |     |     |
+| [DOTA (CVPR'2018)](./tools/data/dota/README.md) | [DIOR (TGRS'2022)](./tools/data/dior/README.md) |  [SSDD (RS'2021)](./tools/data/ssdd/README.md) |  [HRSC (ICPRAM'2017)](./tools/data/hrsc/README.md)   |   
+| [HRSID (Access'2020)](./tools/data/hrsid/README.md) | [SRSDD (RS'2021)](./tools/data/srsdd/README.md) | [RSDD (Journal of Radars'2022)](./tools/data/rsdd/README.md)  |  [ICDAR2015 (ICDAR'2015)](./tools/data/icdar2015/README.md)   |  
+| [SARDet 100K (Nips'2024)](./tools/data/sardet_100k/README.md) | [RSAR (CVPR'2025)](./tools/data/rsar/README.md) | [FAIR1M (ISPRS'2022)](./tools/data/fair/README.md)  | [STAR (TPAMI'2025)](./tools/data/star/README.md)    |    
+| [ReCon1M (TGRS'2025)](./tools/data/recon1m/README.md)    |  [CODrone (Arxiv'2025)](./tools/data/codrone/README.md)   |     |     |
 
 
 ## Train 📈
