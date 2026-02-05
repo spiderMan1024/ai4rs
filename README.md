@@ -159,10 +159,11 @@ mim install "mmcv>2.0.0rc4, <2.2.0" -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
 
-**Step 5:** Install MMDetection
+**Step 5:** Install MMDetection and MMSegmentation
 
 ```
 mim install 'mmdet>3.0.0rc6, <3.4.0' -i https://pypi.tuna.tsinghua.edu.cn/simple
+mim install "mmsegmentation>=1.2.2" -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
 
@@ -171,7 +172,7 @@ mim install 'mmdet>3.0.0rc6, <3.4.0' -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 git clone https://github.com/wokaikaixinxin/ai4rs.git
 cd ai4rs
-pip install -v -e . -i https://pypi.tuna.tsinghua.edu.cn/simple
+pip install -e .[all] -i https://pypi.tuna.tsinghua.edu.cn/simple
 # "-v" means verbose, or more output
 # "-e" means installing a project in editable mode,
 # thus any local modifications made to the code will take effect without reinstallation.
