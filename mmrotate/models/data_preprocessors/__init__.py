@@ -1,3 +1,3 @@
-from .data_preprocessor import YOLOv5DetDataPreprocessor
+from .data_preprocessor import YOLOv5DetDataPreprocessor, DualInputSegDataPreProcessor
 
-__all__ = ['YOLOv5DetDataPreprocessor']
+__all__ = ['YOLOv5DetDataPreprocessor', 'DualInputSegDataPreProcessor']
