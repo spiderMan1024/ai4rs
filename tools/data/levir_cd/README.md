@@ -33,7 +33,7 @@ ai4rs
 ```
 
 
-## Classes of CODrone
+## Classes of LEVIR-CD
 
 The 2 classes.
 
