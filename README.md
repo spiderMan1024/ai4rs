@@ -117,6 +117,13 @@ Coming soon
 | :---: | :---: | :---: | :---: |
 | [STAR<br>(TPAMI'2025)](./tools/data/star/README.md) |  |   |     |  
 
+<details open>
+<summary><b>Change Detection</b></summary>
+
+|     |     |     |     |
+| :---: | :---: | :---: | :---: |
+| [Changer<br>(TGRS'2023)](./projects/changer/README.md) |  |   |     |  
+
 
 ## Installation ⚙️
 
@@ -172,10 +179,21 @@ mim install "mmsegmentation>=1.2.2" -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 git clone https://github.com/wokaikaixinxin/ai4rs.git
 cd ai4rs
-pip install -e .[all] -i https://pypi.tuna.tsinghua.edu.cn/simple
+```
+
+Option 1: Basic Installation  
+Use this for a lightweight setup with only the core functional dependencies.  
+```
+pip install -v -e . -i https://pypi.tuna.tsinghua.edu.cn/simple
 # "-v" means verbose, or more output
 # "-e" means installing a project in editable mode,
 # thus any local modifications made to the code will take effect without reinstallation.
+```
+
+Option 2: Full Installation (Recommended)  
+Use this if you want all features and dependencies (e.g., change detection). 
+```
+pip install -v -e .[all] -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
 **Step 7:** Version of NumPy
