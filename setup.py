@@ -182,6 +182,7 @@ if __name__ == '__main__':
             'Programming Language :: Python :: 3.7',
             'Programming Language :: Python :: 3.8',
             'Programming Language :: Python :: 3.9',
+            'Programming Language :: Python :: 3.10',
         ],
         license='Apache License 2.0',
         install_requires=parse_requirements('requirements/runtime.txt'),
@@ -191,6 +192,7 @@ if __name__ == '__main__':
             'build': parse_requirements('requirements/build.txt'),
             'optional': parse_requirements('requirements/optional.txt'),
             'mim': parse_requirements('requirements/mminstall.txt'),
+            'multimodal': parse_requirements('requirements/multimodal.txt'),
         },
         zip_safe=False)
 
