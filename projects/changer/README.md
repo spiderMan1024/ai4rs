@@ -36,10 +36,10 @@ Change detection is an important tool for long-term earth observation missions. 
 
 |  Method   | Backbone | Crop Size | Lr schd | Mem (GB) | Precision | Recall | F1-Score |  IoU  |                            config                            |                           download                           |
 | :-------: | :------: | :-------: | :-----: | :------: | :-------: | :----: | :------: | :---: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| ChangerEx |   r18    |  512x512  |  80000  |    -     |   75.04   | 59.35  |  66.28   | 49.57 | [config]() | [model]()  |
-| ChangerEx |   s50    |  512x512  |  80000  |    -     |   74.63   | 61.08  |  67.18   | 50.58 | [config]() | [model]()  |
-| ChangerEx |   s101   |  512x512  |  80000  |    -     |   74.40   | 61.95  |  67.61   | 51.07 | [config]() | [model]()  |
-| ChangerEx |  MIT-B0  |  512x512  |  80000  |    -     |   73.01   | 62.04  |  67.08   | 50.47 | [config]() | [model]()  |
+| ChangerEx |   r18    |  512x512  |  80000  |    -     |   75.04   | 59.35  |  66.28   | 49.57 | [config] | [model]  |
+| ChangerEx |   s50    |  512x512  |  80000  |    -     |   74.63   | 61.08  |  67.18   | 50.58 | [config] | [model]  |
+| ChangerEx |   s101   |  512x512  |  80000  |    -     |   74.40   | 61.95  |  67.61   | 51.07 | [config] | [model]  |
+| ChangerEx |  MIT-B0  |  512x512  |  80000  |    -     |   73.01   | 62.04  |  67.08   | 50.47 | [config] | [model]  |
 
 
 
@@ -48,9 +48,9 @@ Change detection is an important tool for long-term earth observation missions. 
 |  Method   | Backbone | Crop Size | Lr schd | Mem (GB) | Precision | Recall | F1-Score |  IoU  |                            config                            |                           download                           |
 | :-------: | :------: | :-------: | :-----: | :------: | :-------: | :----: | :------: | :---: | :----------------------------------------------------------: | :----------------------------------------------------------: |
 | ChangerEx |   r18    |  512x512  |  40000  |    -     |   92.86   | 90.78  |  91.81   | 84.86 | [config](./configs/changer_ex_r18_512x512_40k_levircd.py) | [model](https://modelscope.cn/models/wokaikaixinxin/ai4rs/resolve/master/changer/changer_ex_r18_512x512_40k_levircd/ChangerEx_r18-512x512_40k_levircd_20221223_120511.pth)  |
-| ChangerEx |   s50    |  512x512  |  40000  |    -     |   93.47   | 90.95  |  92.19   | 85.51 | [config]() | [model]()  |
-| ChangerEx |   s101   |  512x512  |  40000  |    -     |   93.38   | 91.31  |  92.33   | 85.76 | [config]() | [model]()  |
-| ChangerEx |  MIT-B0  |  512x512  |  40000  |    -     |   93.61   | 90.56  |  92.06   | 85.29 | [config]() | [model]()  |
+| ChangerEx |   s50    |  512x512  |  40000  |    -     |   93.47   | 90.95  |  92.19   | 85.51 | [config] | [model]  |
+| ChangerEx |   s101   |  512x512  |  40000  |    -     |   93.38   | 91.31  |  92.33   | 85.76 | [config] | [model]  |
+| ChangerEx |  MIT-B0  |  512x512  |  40000  |    -     |   93.61   | 90.56  |  92.06   | 85.29 | [config] | [model]  |
 
 
 - All metrics are based on the category "change".
