@@ -306,6 +306,8 @@ Please refer to [FAQ](https://github.com/open-mmlab/mmrotate/blob/1.x/docs/en/no
 
 [MMRotate](https://github.com/open-mmlab/MMRotate)
 
+[open-cd](https://github.com/likyoo/open-cd)
+
 ## Citation 🌟
 
 
