@@ -181,7 +181,7 @@ python -c "import mmdet; print(mmdet.__file__)"
 # AssertionError: MMCV==2.2.0 is used but incompatible. Please install mmcv>=2.0.0rc4, <2.2.0.
 ```
 
- change file `/root/anaconda3/envs/ai4rs/lib/python3.10/site-packages/mmdet/__init__.py`
+ modify `/root/anaconda3/envs/ai4rs/lib/python3.10/site-packages/mmdet/__init__.py`
 ```
 vim '/root/anaconda3/envs/ai4rs/lib/python3.10/site-packages/mmdet/__init__.py'
 # mmcv_maximum_version = '2.2.0' -> '2.3.3'
@@ -198,7 +198,7 @@ python -c "import mmseg; print(mmseg.__file__)"
 # AssertionError: MMCV==2.2.0 is used but incompatible. Please install mmcv>=2.0.0rc4.
 ```
 
- change file `/root/anaconda3/envs/ai4rs/lib/python3.10/site-packages/mmseg/__init__.py`
+ modify `/root/anaconda3/envs/ai4rs/lib/python3.10/site-packages/mmseg/__init__.py`
 ```
 vim '/root/anaconda3/envs/ai4rs/lib/python3.10/site-packages/mmseg/__init__.py'
 # MMCV_MAX = '2.2.0' -> '2.3.0'
