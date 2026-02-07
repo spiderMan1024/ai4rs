@@ -176,10 +176,9 @@ Modify the version check code in `mmdet`.
 ```
 python -c "import mmdet; print(mmdet.__file__)"
 # Output
-# Traceback (most recent call last):
-#   File "<string>", line 1, in <module>
-#   File "/root/anaconda3/envs/ai4rs/lib/python3.10/site-packages/mmdet/__init__.py", line 17, in <module>
-#     and mmcv_version < digit_version(mmcv_maximum_version)), \
+# ...
+#   File "/root/anaconda3/envs/ai4rs/lib/python3.10/site-packages/mmdet/__init__.py", line 17, 
+#     in <module> and mmcv_version < digit_version(mmcv_maximum_version)), \
 # AssertionError: MMCV==2.2.0 is used but incompatible. Please install mmcv>=2.0.0rc4, <2.2.0.
 ```
 
@@ -194,10 +193,9 @@ Modify the version check code in `mmseg`.
 ```
 python -c "import mmseg; print(mmseg.__file__)"
 # Output
-# Traceback (most recent call last):
-#   File "<string>", line 1, in <module>
-#   File "/root/anaconda3/envs/ai4rs/lib/python3.10/site-packages/mmseg/__init__.py", line 61, in <module>
-#     assert (mmcv_min_version <= mmcv_version < mmcv_max_version), \
+# ...
+#   File "/root/anaconda3/envs/ai4rs/lib/python3.10/site-packages/mmseg/__init__.py", line 61,
+#      in <module> assert (mmcv_min_version <= mmcv_version < mmcv_max_version), \
 # AssertionError: MMCV==2.2.0 is used but incompatible. Please install mmcv>=2.0.0rc4.
 ```
 
