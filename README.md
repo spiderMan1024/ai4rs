@@ -174,7 +174,6 @@ mim install "mmsegmentation>=1.2.2" -i https://pypi.tuna.tsinghua.edu.cn/simple
 Change the version number in the `mmdet` code.
 ```
 python -c "import mmdet; print(mmdet.__file__)"
-# Output
 # ...
 #   File "/root/anaconda3/envs/ai4rs/lib/python3.10/site-packages/mmdet/__init__.py", line 17, 
 #     in <module> and mmcv_version < digit_version(mmcv_maximum_version)), \
@@ -185,13 +184,11 @@ python -c "import mmdet; print(mmdet.__file__)"
 ```
 vim '/root/anaconda3/envs/ai4rs/lib/python3.10/site-packages/mmdet/__init__.py'
 # mmcv_maximum_version = '2.2.0' -> '2.3.3'
-# save
 ```
 
 Change the version number in the `mmseg` code.
 ```
 python -c "import mmseg; print(mmseg.__file__)"
-# Output
 # ...
 #   File "/root/anaconda3/envs/ai4rs/lib/python3.10/site-packages/mmseg/__init__.py", line 61,
 #      in <module> assert (mmcv_min_version <= mmcv_version < mmcv_max_version), \
@@ -202,7 +199,6 @@ python -c "import mmseg; print(mmseg.__file__)"
 ```
 vim '/root/anaconda3/envs/ai4rs/lib/python3.10/site-packages/mmseg/__init__.py'
 # MMCV_MAX = '2.2.0' -> '2.3.0'
-# save
 ```
 
 
