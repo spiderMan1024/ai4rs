@@ -183,7 +183,7 @@ python -c "import mmdet; print(mmdet.__file__)"
  modify `/root/anaconda3/envs/ai4rs/lib/python3.10/site-packages/mmdet/__init__.py`
 ```
 vim '/root/anaconda3/envs/ai4rs/lib/python3.10/site-packages/mmdet/__init__.py'
-# mmcv_maximum_version = '2.2.0' -> '2.3.3'
+# mmcv_maximum_version = '2.2.0' -> '2.3.0'
 ```
 
 Change the version number in the `mmseg` code.
