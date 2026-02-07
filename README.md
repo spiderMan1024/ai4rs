@@ -2,6 +2,12 @@
   <img src="resources/ai4rs-logo.png" width="800"/>
 </div>
 
+<div align="center">
+
+![visitors](https://visitor-badge.laobi.icu/badge?page_id=wokaikaixinxin/ai4rs)
+[![GitHub Repo stars](https://img.shields.io/github/stars/wokaikaixinxin/ai4rs?style=social)](https://github.com/wokaikaixinxin/ai4rs/stargazers)
+
+</div>
 
 
 <div align="center">
