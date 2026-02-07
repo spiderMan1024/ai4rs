@@ -144,7 +144,7 @@ conda activate ai4rs
 **Step 3:** Install Pytorch according to [official instructions](https://pytorch.org/get-started/previous-versions/). For example:
 
 ```
-conda install pytorch==2.1.2 torchvision==0.16.2 torchaudio==2.1.2 pytorch-cuda=12.1 -c pytorch -c nvidia
+pip install torch==2.4.0 torchvision==0.19.0 torchaudio==2.4.0 --index-url https://download.pytorch.org/whl/cu121
 ```
 
 Verify whether pytorch supports cuda
@@ -154,15 +154,13 @@ python -c "import torch; print(torch.cuda.is_available())"
 ```
 
 
-
-
 **Step 4:** Install MMEngine and MMCV, and we recommend using MIM to complete the installation
 
 
 ```
 pip install -U openmim -i https://pypi.tuna.tsinghua.edu.cn/simple
 mim install mmengine -i https://pypi.tuna.tsinghua.edu.cn/simple
-mim install "mmcv>2.0.0rc4, <2.2.0" -i https://pypi.tuna.tsinghua.edu.cn/simple
+mim install "mmcv==2.2.0" -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
 
@@ -171,6 +169,47 @@ mim install "mmcv>2.0.0rc4, <2.2.0" -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 mim install 'mmdet>3.0.0rc6, <3.4.0' -i https://pypi.tuna.tsinghua.edu.cn/simple
 mim install "mmsegmentation>=1.2.2" -i https://pypi.tuna.tsinghua.edu.cn/simple
+```
+
+
+Modify the version check code in `mmdet`.
+```
+python -c "import mmdet; print(mmdet.__file__)"
+```
+
+Output
+```
+  ...
+  File "/root/anaconda3/envs/ai4rs/lib/python3.10/site-packages/mmdet/__init__.py", line 17, in <module>
+    and mmcv_version < digit_version(mmcv_maximum_version)), \
+AssertionError: MMCV==2.2.0 is used but incompatible. Please install mmcv>=2.0.0rc4, <2.2.0.
+```
+
+Modify `/root/anaconda3/envs/ai4rs/lib/python3.10/site-packages/mmdet/__init__.py`
+```
+vim '/root/anaconda3/envs/ai4rs/lib/python3.10/site-packages/mmdet/__init__.py'
+# mmcv_maximum_version = '2.2.0' -> '2.3.3'
+# save
+```
+
+Modify the version check code in `mmseg`.
+```
+python -c "import mmseg; print(mmseg.__file__)"
+```
+
+Output
+```
+  ...
+  File "/root/anaconda3/envs/ai4rs/lib/python3.10/site-packages/mmseg/__init__.py", line 61, in <module>
+    assert (mmcv_min_version <= mmcv_version < mmcv_max_version), \
+AssertionError: MMCV==2.2.0 is used but incompatible. Please install mmcv>=2.0.0rc4.
+```
+
+Modify `/root/anaconda3/envs/ai4rs/lib/python3.10/site-packages/mmseg/__init__.py`
+```
+vim '/root/anaconda3/envs/ai4rs/lib/python3.10/site-packages/mmseg/__init__.py'
+# MMCV_MAX = '2.2.0' -> '2.3.0'
+# save
 ```
 
 
@@ -194,25 +233,6 @@ Option 2: Full Installation (Recommended)
 Use this if you want all features and dependencies (e.g., change detection). 
 ```
 pip install -v -e .[all] -i https://pypi.tuna.tsinghua.edu.cn/simple
-```
-
-**Step 7:** Version of NumPy
-
-If the NumPy version is incompatible, downgrade the NumPy version to 1.x.
-
-```
-A module that was compiled using NumPy 1.x cannot be run in
-NumPy 2.0.1 as it may crash. To support both 1.x and 2.x
-versions of NumPy, modules must be compiled with NumPy 2.0.
-Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
-
-If you are a user of the module, the easiest solution will be to
-downgrade to 'numpy<2' or try to upgrade the affected module.
-We expect that some modules will need time to support NumPy 2.
-```
-
-```
-pip install "numpy<2" -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
 

@@ -1,4 +1,3 @@
-mmcv>2.0.0rc4, <2.2.0
+mmcv>2.0.0rc4, <=2.2.0
 mmdet>3.0.0rc6,<3.4.0
 mmengine
-opencv-python==4.12.0.88
