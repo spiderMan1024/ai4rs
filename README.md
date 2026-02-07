@@ -171,8 +171,7 @@ mim install 'mmdet>3.0.0rc6, <3.4.0' -i https://pypi.tuna.tsinghua.edu.cn/simple
 mim install "mmsegmentation>=1.2.2" -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
-
-Modify the version check code in `mmdet`.
+Change the version number in the `mmdet` code.
 ```
 python -c "import mmdet; print(mmdet.__file__)"
 # Output
@@ -182,14 +181,14 @@ python -c "import mmdet; print(mmdet.__file__)"
 # AssertionError: MMCV==2.2.0 is used but incompatible. Please install mmcv>=2.0.0rc4, <2.2.0.
 ```
 
-Modify `/root/anaconda3/envs/ai4rs/lib/python3.10/site-packages/mmdet/__init__.py`
+ change file `/root/anaconda3/envs/ai4rs/lib/python3.10/site-packages/mmdet/__init__.py`
 ```
 vim '/root/anaconda3/envs/ai4rs/lib/python3.10/site-packages/mmdet/__init__.py'
 # mmcv_maximum_version = '2.2.0' -> '2.3.3'
 # save
 ```
 
-Modify the version check code in `mmseg`.
+Change the version number in the `mmseg` code.
 ```
 python -c "import mmseg; print(mmseg.__file__)"
 # Output
@@ -199,7 +198,7 @@ python -c "import mmseg; print(mmseg.__file__)"
 # AssertionError: MMCV==2.2.0 is used but incompatible. Please install mmcv>=2.0.0rc4.
 ```
 
-Modify `/root/anaconda3/envs/ai4rs/lib/python3.10/site-packages/mmseg/__init__.py`
+ change file `/root/anaconda3/envs/ai4rs/lib/python3.10/site-packages/mmseg/__init__.py`
 ```
 vim '/root/anaconda3/envs/ai4rs/lib/python3.10/site-packages/mmseg/__init__.py'
 # MMCV_MAX = '2.2.0' -> '2.3.0'
