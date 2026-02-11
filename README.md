@@ -107,7 +107,7 @@ Coming soon
 
 |     |     |     |     |
 | :---: | :---: | :---: | :---: |
-| [SARDet 100K<br>(Nips'2024)](./projects/SARDet_100K/README.md) | [RSAR <br> (CVPR'2025)](./tools/data/rsar/README.md) |   |     |   
+| [SARDet 100K (Nips'2024)](./projects/SARDet_100K/README.md) | [RSAR (CVPR'2025)](./tools/data/rsar/README.md) |   |     |   
 
 <details open>
 <summary><b>SAM</b></summary>
@@ -121,14 +121,14 @@ Coming soon
 
 |     |     |     |     |
 | :---: | :---: | :---: | :---: |
-| [STAR<br>(TPAMI'2025)](./tools/data/star/README.md) |  |   |     |  
+| [STAR (TPAMI'2025)](./tools/data/star/README.md) |  |   |     |  
 
 <details open>
 <summary><b>Change Detection</b></summary>
 
 |     |     |     |     |
 | :---: | :---: | :---: | :---: |
-| [FC-EF<br>(ICIP'2018)](./projects/fcsn/README.md) | [FC-Siam-conc<br>(ICIP'2018)](./projects/fcsn/README.md) | [FC-Siam-diff<br> (ICIP'2018)](./projects/fcsn/README.md) |   [Changer<br>(TGRS'2023)](./projects/changer/README.md)  |  
+| [FC-EF (ICIP'2018)](./projects/fcsn/README.md) | [FC-Siam-conc (ICIP'2018)](./projects/fcsn/README.md) | [FC-Siam-diff (ICIP'2018)](./projects/fcsn/README.md) |   [Changer (TGRS'2023)](./projects/changer/README.md)  |  
 
 
 ## Installation ⚙️
