@@ -1,7 +1,7 @@
 # model settings
 norm_cfg = dict(type='SyncBN', requires_grad=True)
 data_preprocessor = dict(
-    type='DualInputSegDataPreProcessor',
+    type='DualInputSegDataPreProcessor',    # mmrotate/models/data_preprocessors/data_preprocessor.py
     mean=[123.675, 116.28, 103.53] * 2,
     std=[58.395, 57.12, 57.375] * 2,
     bgr_to_rgb=True,
@@ -11,11 +11,11 @@ data_preprocessor = dict(
     test_cfg=dict(size_divisor=32))
 base_channels = 16
 model = dict(
-    type='DIEncoderDecoder',
+    type='DIEncoderDecoder',    # mmrotate/models/detectors/dual_input_encoder_decoder.py
     data_preprocessor=data_preprocessor,
     pretrained=None,
     backbone=dict(
-        type='FC_Siam_conc',
+        type='FC_Siam_conc',    # projects/fcsn/fcsn/fcsn.py
         in_channels=3,
         base_channel=base_channels),
     decode_head=dict(
