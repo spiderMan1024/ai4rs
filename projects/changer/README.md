@@ -48,8 +48,8 @@ Change detection is an important tool for long-term earth observation missions. 
 |  Method   | Backbone | Crop Size | Lr schd | Mem (GB) | Precision | Recall | F1-Score |  IoU  |                            config                            |                           download                           |
 | :-------: | :------: | :-------: | :-----: | :------: | :-------: | :----: | :------: | :---: | :----------------------------------------------------------: | :----------------------------------------------------------: |
 | ChangerEx |   r18    |  512x512  |  40000  |    -     |   92.86   | 90.78  |  91.81   | 84.86 | [config](./configs/changer_ex_r18_512x512_40k_levircd.py) | [model](https://modelscope.cn/models/wokaikaixinxin/ai4rs/resolve/master/changer/changer_ex_r18_512x512_40k_levircd/ChangerEx_r18-512x512_40k_levircd_20221223_120511.pth)  |
-| ChangerEx |   s50    |  512x512  |  40000  |    -     |   93.47   | 90.95  |  92.19   | 85.51 | [config] | [model]  |
-| ChangerEx |   s101   |  512x512  |  40000  |    -     |   93.38   | 91.31  |  92.33   | 85.76 | [config] | [model]  |
+| ChangerEx |   s50    |  512x512  |  40000  |    -     |   93.47   | 90.95  |  92.19   | 85.51 | [config](./configs/changer_ex_s50_512x512_40k_levircd.py) | [model](https://modelscope.cn/models/wokaikaixinxin/ai4rs/resolve/master/changer/changer_ex_s50_512x512_40k_levircd/ChangerEx_s50-512x512_40k_levircd_20220702-145628.pth)  |
+| ChangerEx |   s101   |  512x512  |  40000  |    -     |   93.38   | 91.31  |  92.33   | 85.76 | [config](./configs/changer_ex_s101_512x512_40k_levircd.py) | [model](https://modelscope.cn/models/wokaikaixinxin/ai4rs/resolve/master/changer/changer_ex_s101_512x512_40k_levircd/ChangerEx_s101-512x512_40k_levircd_20220710-082722.pth)  |
 | ChangerEx |  MIT-B0  |  512x512  |  40000  |    -     |   93.61   | 90.56  |  92.06   | 85.29 | [config] | [model]  |
 
 
