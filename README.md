@@ -89,9 +89,10 @@ We hope to integrate remote sensing related work based on **MMLab**, especially 
 <details open>
 <summary><b>Oriented Object Detection - Weakly Supervise</b></summary>
 
-|       |       |       |       |       |
-| :---: | :---: | :---: | :---: | :---: |
-| [H2RBox (ICLR'2023)](configs/h2rbox/README.md) | [H2RBox-v2 (Nips'2023)](configs/h2rbox_v2/README.md) |  [Point2Rbox (CVPR'2024)](./projects/Point2Rbox/README.md)   |  [Point2Rbox-v2 (CVPR'2025)](./projects/Point2Rbox_v2/README.md)| [WhollyWOOD (TPAMI'2025)](./projects/WhollyWOOD/README.md)   |
+|       |       |       |       |
+| :---: | :---: | :---: | :---: |
+| [H2RBox (ICLR'2023)](configs/h2rbox/README.md) | [H2RBox-v2 (Nips'2023)](configs/h2rbox_v2/README.md) |  [Point2Rbox (CVPR'2024)](./projects/Point2Rbox/README.md)   |  [Point2Rbox-v2 (CVPR'2025)](./projects/Point2Rbox_v2/README.md)|   
+|  [WhollyWOOD (TPAMI'2025)](./projects/WhollyWOOD/README.md)     |       |       |       |
 </details>
 
 
@@ -108,6 +109,8 @@ Coming soon
 |     |     |     |     |
 | :---: | :---: | :---: | :---: |
 | [SARDet 100K (Nips'2024)](./projects/SARDet_100K/README.md) | [RSAR (CVPR'2025)](./tools/data/rsar/README.md) |   |     |   
+</details>
+
 
 <details open>
 <summary><b>SAM</b></summary>
@@ -115,6 +118,8 @@ Coming soon
 |     |     |     |     |
 | :---: | :---: | :---: | :---: |
 | [MMRotate SAM](./projects/mmrotate-sam/README.md) |  |   |     |   
+</details>
+
 
 <details open>
 <summary><b>Scene graph generation (SGG)</b></summary>
@@ -122,6 +127,8 @@ Coming soon
 |     |     |     |     |
 | :---: | :---: | :---: | :---: |
 | [STAR (TPAMI'2025)](./tools/data/star/README.md) |  |   |     |  
+</details>
+
 
 <details open>
 <summary><b>Change Detection</b></summary>
@@ -130,6 +137,7 @@ Coming soon
 | :---: | :---: | :---: | :---: |
 | [FC-EF (ICIP'2018)](./projects/fcsn/README.md) | [FC-Siam-conc (ICIP'2018)](./projects/fcsn/README.md) | [FC-Siam-diff (ICIP'2018)](./projects/fcsn/README.md) |   [Changer (TGRS'2023)](./projects/changer/README.md)  |  
 |  BiT (TGRS' 2021)   |     |     |     |
+</details>
 
 
 ## Installation ⚙️
