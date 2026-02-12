@@ -64,37 +64,34 @@ We hope to integrate remote sensing related work based on **MMLab**, especially 
 
 |     |     |     |     |
 | :---: | :---: | :---: | :---: |
-| [GWD (ICML'2021)](configs/gwd/README.md) | [KLD (NeurIPS'2021)](configs/kld/README.md) | [KFIoU (ICLR'2023)](configs/kfiou/README.md) | |
+| [GWD<br>(ICML'2021)](configs/gwd/README.md) | [KLD<br>(NeurIPS'2021)](configs/kld/README.md) | [KFIoU<br>(ICLR'2023)](configs/kfiou/README.md) | |
 </details>
 
 <details open>
 <summary><b>Oriented Object Detection - Coder</b></summary>
 
-|     |     |     |     |
-| :---: | :---: | :---: | :---: |
-| [CSL (ECCV'2020)](configs/csl/README.md) | [Oriented R-CNN (ICCV'2021)](configs/oriented_rcnn/README.md) | [PSC (CVPR'2023)](configs/psc/README.md) | [ACM (CVPR'2024)](./projects/ACM/README.md) |
-| [GauCho (CVPR'2025)](projects/GauCho/README.md) |    |     |     |
+|     |     |     |     |     |
+| :---: | :---: | :---: | :---: | :---: |
+| [CSL<br>(ECCV'2020)](configs/csl/README.md) | [Oriented R-CNN<br>(ICCV'2021)](configs/oriented_rcnn/README.md) | [PSC<br>(CVPR'2023)](configs/psc/README.md) | [ACM<br>(CVPR'2024)](./projects/ACM/README.md) |[GauCho<br>(CVPR'2025)](projects/GauCho/README.md) |
 </details>
 
 
 <details open>
 <summary><b>Oriented Object Detection - Backbone</b></summary>
 
-|       |       |       |       |
-| :---: | :---: | :---: | :---: |
-| [ConvNeXt (CVPR'2022)](./configs/convnext/README.md)| [LSKNet (ICCV'2023)](projects/LSKNet/README.md)  | [ARC (ICCV'2023)](./projects/ARC/README.md)   |   [PKINet (CVPR'2024)](./projects/PKINet/README.md)  |    
-| [SARDet 100K (Nips'2024)](./projects/SARDet_100K/README.md)  | [GRA (ECCV'2024)](./projects/GRA/README.md) | [LEGNet (ICCVW'2025)](./projects/LEGNet/README.md) | [Strip R-CNN (AAAI'2026)](./projects/Strip_RCNN/README.md)   |
-| [LWGANet (AAAI'2026)](./projects/LWGANet/README.md)    |       |   |    |
+|       |       |       |       |       |
+| :---: | :---: | :---: | :---: | :---: |
+| [ConvNeXt<br>(CVPR'2022)](./configs/convnext/README.md)| [LSKNet<br>(ICCV'2023)](projects/LSKNet/README.md)  | [ARC<br>(ICCV'2023)](./projects/ARC/README.md)   |   [PKINet<br>(CVPR'2024)](./projects/PKINet/README.md)  |   [SARDet 100K<br>(Nips'2024)](./projects/SARDet_100K/README.md)  | 
+| [GRA<br>(ECCV'2024)](./projects/GRA/README.md) | [LEGNet<br>(ICCVW'2025)](./projects/LEGNet/README.md) | [Strip R-CNN<br>(AAAI'2026)](./projects/Strip_RCNN/README.md)   |  [LWGANet<br>(AAAI'2026)](./projects/LWGANet/README.md)    |       |       
 </details>
 
 
 <details open>
 <summary><b>Oriented Object Detection - Weakly Supervise</b></summary>
 
-|       |       |       |       |
-| :---: | :---: | :---: | :---: |
-| [H2RBox(ICLR'2023)](configs/h2rbox/README.md) | [H2RBox-v2(Nips'2023)](configs/h2rbox_v2/README.md) |  [Point2Rbox(CVPR'2024)](./projects/Point2Rbox/README.md)   |  [Point2Rbox-v2(CVPR'2025)](./projects/Point2Rbox_v2/README.md)|   
-|  [WhollyWOOD(TPAMI'2025)](./projects/WhollyWOOD/README.md)     |       |       |       |
+|       |       |       |       |       |
+| :---: | :---: | :---: | :---: | :---: |
+| [H2RBox<br>(ICLR'2023)](configs/h2rbox/README.md) | [H2RBox-v2<br>(Nips'2023)](configs/h2rbox_v2/README.md) |  [Point2Rbox<br>(CVPR'2024)](./projects/Point2Rbox/README.md)   |  [Point2Rbox-v2<br>(CVPR'2025)](./projects/Point2Rbox_v2/README.md)| [WhollyWOOD<br>(TPAMI'2025)](./projects/WhollyWOOD/README.md)   |
 </details>
 
 
