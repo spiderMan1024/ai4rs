@@ -91,7 +91,7 @@ We hope to integrate remote sensing related work based on **MMLab**, especially 
 
 |       |       |       |       |       |
 | :---: | :---: | :---: | :---: | :---: |
-| [H2RBox<br>(ICLR'2023)](configs/h2rbox/README.md) | [H2RBox-v2<br>(Nips'2023)](configs/h2rbox_v2/README.md) |  [Point2Rbox<br>(CVPR'2024)](./projects/Point2Rbox/README.md)   |  [Point2Rbox-v2<br>(CVPR'2025)](./projects/Point2Rbox_v2/README.md)| [WhollyWOOD<br>(TPAMI'2025)](./projects/WhollyWOOD/README.md)   |
+| [H2RBox (ICLR'2023)](configs/h2rbox/README.md) | [H2RBox-v2 (Nips'2023)](configs/h2rbox_v2/README.md) |  [Point2Rbox (CVPR'2024)](./projects/Point2Rbox/README.md)   |  [Point2Rbox-v2 (CVPR'2025)](./projects/Point2Rbox_v2/README.md)| [WhollyWOOD (TPAMI'2025)](./projects/WhollyWOOD/README.md)   |
 </details>
 
 
