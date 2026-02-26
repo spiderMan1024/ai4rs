@@ -1,8 +1,8 @@
-# Copyright (c) Open-CD. All rights reserved.
 # Copyright (c) AI4RS. All rights reserved.
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+from einops import rearrange
 from mmcv.cnn import ConvModule, build_norm_layer
 from mmengine.model import ModuleList, Sequential
 
@@ -11,59 +11,98 @@ from mmseg.models.utils import Upsample
 from mmrotate.registry import MODELS
 
 
-class CrossAttention(nn.Module):
-    def __init__(self,
-                 in_dims,
-                 embed_dims,
-                 num_heads,
-                 dropout_rate=0.,
-                 apply_softmax=True):
-        super(CrossAttention, self).__init__()
-        self.num_heads = num_heads
-        self.scale = in_dims ** -0.5
+class Attention(nn.Module):
+    def __init__(self, dim, heads = 8, dim_head = 64, dropout = 0.):
+        super().__init__()
+        inner_dim = dim_head *  heads
+        self.heads = heads
+        self.scale = dim ** -0.5
 
-        self.apply_softmax = apply_softmax
-
-        self.to_q = nn.Linear(in_dims, embed_dims, bias=False)
-        self.to_k = nn.Linear(in_dims, embed_dims, bias=False)
-        self.to_v = nn.Linear(in_dims, embed_dims, bias=False)
-
-        self.fc_out = nn.Sequential(
-            nn.Linear(embed_dims, in_dims),
-            nn.Dropout(dropout_rate)
+        self.to_qkv = nn.Linear(dim, inner_dim * 3, bias = False)
+        self.to_out = nn.Sequential(
+            nn.Linear(inner_dim, dim),
+            nn.Dropout(dropout)
         )
 
-    def forward(self, x, ref):
-        b, n = x.shape[:2]
-        h = self.num_heads
+    def forward(self, x, mask = None):
+        b, n, _, h = *x.shape, self.heads
+        qkv = self.to_qkv(x).chunk(3, dim = -1)
+        q, k, v = map(lambda t: rearrange(t, 'b n (h d) -> b h n d', h = h), qkv)
 
+        dots = torch.einsum('bhid,bhjd->bhij', q, k) * self.scale
+        mask_value = -torch.finfo(dots.dtype).max
+
+        if mask is not None:
+            mask = F.pad(mask.flatten(1), (1, 0), value = True)
+            assert mask.shape[-1] == dots.shape[-1], 'mask has incorrect dimensions'
+            mask = mask[:, None, :] * mask[:, :, None]
+            dots.masked_fill_(~mask, mask_value)
+            del mask
+
+        attn = dots.softmax(dim=-1)
+
+
+        out = torch.einsum('bhij,bhjd->bhid', attn, v)
+        out = rearrange(out, 'b h n d -> b n (h d)')
+        out = self.to_out(out)
+        return out
+
+class Cross_Attention(nn.Module):
+    def __init__(self, dim, heads = 8, dim_head = 64, dropout = 0., softmax=True):
+        super().__init__()
+        inner_dim = dim_head * heads
+        self.heads = heads
+        self.scale = dim ** -0.5
+
+        self.softmax = softmax
+        self.to_q = nn.Linear(dim, inner_dim, bias=False)
+        self.to_k = nn.Linear(dim, inner_dim, bias=False)
+        self.to_v = nn.Linear(dim, inner_dim, bias=False)
+
+        self.to_out = nn.Sequential(
+            nn.Linear(inner_dim, dim),
+            nn.Dropout(dropout)
+        )
+
+    def forward(self, x, m, mask = None):
+
+        b, n, _, h = *x.shape, self.heads
         q = self.to_q(x)
-        k = self.to_k(ref)
-        v = self.to_v(ref)
+        k = self.to_k(m)
+        v = self.to_v(m)
 
-        q = q.reshape((b, n, h, -1)).permute((0, 2, 1, 3))
-        k = k.reshape((b, ref.shape[1], h, -1)).permute((0, 2, 1, 3))
-        v = v.reshape((b, ref.shape[1], h, -1)).permute((0, 2, 1, 3))
+        q, k, v = map(lambda t: rearrange(t, 'b n (h d) -> b h n d', h = h), [q,k,v])
 
-        mult = torch.matmul(q, k.transpose(-1, -2)) * self.scale
+        dots = torch.einsum('bhid,bhjd->bhij', q, k) * self.scale
+        mask_value = -torch.finfo(dots.dtype).max
 
-        if self.apply_softmax:
-            mult = F.softmax(mult, dim=-1)
+        if mask is not None:
+            mask = F.pad(mask.flatten(1), (1, 0), value = True)
+            assert mask.shape[-1] == dots.shape[-1], 'mask has incorrect dimensions'
+            mask = mask[:, None, :] * mask[:, :, None]
+            dots.masked_fill_(~mask, mask_value)
+            del mask
 
-        out = torch.matmul(mult, v)
-        out = out.permute((0, 2, 1, 3)).flatten(2)
-        return self.fc_out(out)
+        if self.softmax:
+            attn = dots.softmax(dim=-1)
+        else:
+            attn = dots
+
+        out = torch.einsum('bhij,bhjd->bhid', attn, v)
+        out = rearrange(out, 'b h n d -> b n (h d)')
+        out = self.to_out(out)
+
+        return out
 
 
 class FeedForward(nn.Sequential):
-    def __init__(self, dim, hidden_dim, dropout_rate=0.):
+    def __init__(self, dim, hidden_dim, dropout = 0.):
         super().__init__(
-            # TODO:to be more mmlab
             nn.Linear(dim, hidden_dim),
-            nn.ReLU(),
-            nn.Dropout(dropout_rate),
+            nn.GELU(),
+            nn.Dropout(dropout),
             nn.Linear(hidden_dim, dim),
-            nn.Dropout(dropout_rate)
+            nn.Dropout(dropout)
         )
 
 
@@ -72,26 +111,24 @@ class TransformerEncoder(nn.Module):
                  in_dims,
                  embed_dims,
                  num_heads,
-                 drop_rate,
-                 norm_cfg,
-                 apply_softmax=True):
+                 dropout,
+                 norm_cfg):
         super(TransformerEncoder, self).__init__()
-        self.attn = CrossAttention(
+        self.attn = Attention(
             in_dims,
             embed_dims,
             num_heads,
-            dropout_rate=drop_rate,
-            apply_softmax=apply_softmax)
+            dropout)
         self.ff = FeedForward(
             in_dims,
             embed_dims,
-            drop_rate
+            dropout
         )
         self.norm1 = build_norm_layer(norm_cfg, in_dims)[1]
         self.norm2 = build_norm_layer(norm_cfg, in_dims)[1]
 
     def forward(self, x):
-        x_ = self.attn(self.norm1(x), self.norm1(x)) + x
+        x_ = self.attn(self.norm1(x)) + x
         y = self.ff(self.norm2(x_)) + x_
         return y
 
@@ -107,23 +144,22 @@ class TransformerDecoder(nn.Module):
             apply_softmax=True
     ):
         super(TransformerDecoder, self).__init__()
-        self.attn = CrossAttention(
+        self.attn = Cross_Attention(
             in_dims,
-            embed_dims,
             num_heads,
-            dropout_rate=drop_rate,
-            apply_softmax=apply_softmax)
+            embed_dims,
+            drop_rate,
+            apply_softmax)
         self.ff = FeedForward(
             in_dims,
-            embed_dims,
+            in_dims * 2,
             drop_rate
         )
         self.norm1 = build_norm_layer(norm_cfg, in_dims)[1]
-        self.norm1_ = build_norm_layer(norm_cfg, in_dims)[1]
         self.norm2 = build_norm_layer(norm_cfg, in_dims)[1]
 
     def forward(self, x, ref):
-        x_ = self.attn(self.norm1(x), self.norm1_(ref)) + x
+        x_ = self.attn(self.norm1(x), self.norm1(ref)) + x
         y = self.ff(self.norm2(x_)) + x_
         return y
 
@@ -155,7 +191,8 @@ class BITHead(BaseDecodeHead):
     def __init__(self,
                  in_channels=256,
                  channels=32,
-                 embed_dims=64,
+                 encoder_head_dim=64,
+                 decoder_head_dim=8,
                  enc_depth=1,
                  enc_with_pos=True,
                  dec_depth=8,
@@ -165,15 +202,14 @@ class BITHead(BaseDecodeHead):
                  pool_mode='max',
                  use_tokenizer=True,
                  token_len=4,
-                 pre_upsample=2,
-                 upsample_size=4,
                  norm_cfg=dict(type='LN'),
-                 act_cfg=dict(type='ReLU', inplace=True),
+                 init_cfg=None,
                  **kwargs):
-        super().__init__(in_channels, channels, **kwargs)
+        super().__init__(in_channels, channels, init_cfg=init_cfg,**kwargs)
+        del self.conv_seg
         self.norm_cfg = norm_cfg
-        self.act_cfg = act_cfg
-        self.embed_dims = embed_dims
+        self.encoder_head_dim = encoder_head_dim
+        self.decoder_head_dim = decoder_head_dim
         self.use_tokenizer = use_tokenizer
         self.num_heads = num_heads
         if not use_tokenizer:
@@ -183,11 +219,13 @@ class BITHead(BaseDecodeHead):
             self.token_len = pool_size * pool_size
         else:
             self.token_len = token_len
-            self.conv_att = ConvModule(
+            self.conv_a = ConvModule(
                 self.channels,
                 self.token_len,
                 1,
                 conv_cfg=self.conv_cfg,
+                act_cfg=None,
+                bias=False
             )
 
         self.enc_with_pos = enc_with_pos
@@ -196,13 +234,14 @@ class BITHead(BaseDecodeHead):
 
         # pre_process to backbone feature
         self.pre_process = Sequential(
-            Upsample(scale_factor=pre_upsample, mode='bilinear', align_corners=self.align_corners),
+            nn.Upsample(scale_factor=2),
             ConvModule(
                 self.in_channels,
                 self.channels,
                 3,
                 padding=1,
-                conv_cfg=self.conv_cfg
+                conv_cfg=self.conv_cfg,
+                act_cfg=None
             )
         )
 
@@ -211,9 +250,9 @@ class BITHead(BaseDecodeHead):
         for _ in range(enc_depth):
             block = TransformerEncoder(
                 self.channels,
-                self.embed_dims,
+                self.encoder_head_dim,
                 self.num_heads,
-                drop_rate=drop_rate,
+                drop_rate,
                 norm_cfg=self.norm_cfg,
             )
             self.encoder.append(block)
@@ -223,23 +262,32 @@ class BITHead(BaseDecodeHead):
         for _ in range(dec_depth):
             block = TransformerDecoder(
                 self.channels,
-                self.embed_dims,
+                self.decoder_head_dim,
                 self.num_heads,
                 drop_rate=drop_rate,
                 norm_cfg=self.norm_cfg,
             )
             self.decoder.append(block)
 
-        self.upsample = Upsample(scale_factor=upsample_size, mode='bilinear', align_corners=self.align_corners)
+        self.upsample = nn.Upsample(scale_factor=4, mode='bilinear')
+
+        self.classifier = nn.Sequential(
+            nn.Conv2d(channels, channels, kernel_size=3,
+                      padding=3 // 2, stride=1, bias=False),
+            nn.BatchNorm2d(channels),
+            nn.ReLU(),
+            nn.Conv2d(channels, self.out_channels, kernel_size=3,
+                      padding=3 // 2, stride=1))
 
     # Token
     def _forward_semantic_tokens(self, x):
-        b, c = x.shape[:2]
-        att_map = self.conv_att(x)
-        att_map = att_map.reshape((b, self.token_len, 1, -1))
-        att_map = F.softmax(att_map, dim=-1)
-        x = x.reshape((b, 1, c, -1))
-        tokens = (x * att_map).sum(-1)
+        b, c, h, w = x.shape
+        spatial_attention = self.conv_a(x)
+        spatial_attention = spatial_attention.view([b, self.token_len, -1]).contiguous()
+        spatial_attention = torch.softmax(spatial_attention, dim=-1)
+        x = x.view([b, c, -1]).contiguous()
+        tokens = torch.einsum('bln,bcn->blc', spatial_attention, x)
+
         return tokens
 
     def _forward_reshaped_tokens(self, x):
@@ -304,5 +352,5 @@ class BITHead(BaseDecodeHead):
     def forward(self, inputs):
         """Forward function."""
         output = self._forward_feature(inputs)
-        output = self.cls_seg(output)
+        output = self.classifier(output)
         return output
