@@ -39,10 +39,10 @@ Modern change detection (CD) has achieved remarkable success by the powerful dis
 ### LEVIR-CD
 
 
-| Method | Backbone | Crop Size | Lr schd | Mem (GB) | Precision | Recall | F1-Score |  IoU  | avg acc |                           config                            | download |
-| :----: | :------: | :-------: | :-----: | :------: | :-------: | :----: | :------: | :---: |  :---: |:----------------------------------------------------------: | :------: |
-|  paper   |   r18    |  256x256  |  40000  |    -     |   89.24     | 89.37  |  89.31   | 80.68 | 98.92 | - | - |
-|  BiT     |   r18    |  256x256  |  40000  |    -     |   90.39     | 89.71  |  90.05   | 81.90 | 98.99 | [config](./configs/bit_r18_256x256_40k_levircd.py) |   [best_ckpt_converted.pth](https://modelscope.cn/models/wokaikaixinxin/ai4rs/resolve/master/bit/best_ckpt_converted.pth) |
+| Method | Backbone | Crop Size | Lr schd | Precision | Recall | F1-Score |  IoU  | avg acc |                           config                            | download |
+| :----: | :------: | :-------: | :-----: |  :-------: | :----: | :------: | :---: |  :---: |:----------------------------------------------------------: | :------: |
+|  paper   |   r18    |  256x256  |  40000  |   89.24     | 89.37  |  89.31   | 80.68 | 98.92 | - | - |
+|  BiT     |   r18    |  256x256  |  40000  |   90.39     | 89.71  |  90.05   | 81.90 | 98.99 | [config](./configs/bit_r18_256x256_40k_levircd.py) |   [best_ckpt_converted.pth](https://modelscope.cn/models/wokaikaixinxin/ai4rs/resolve/master/bit/best_ckpt_converted.pth) |
 
 
 - Our checkpoint `best_ckpt_converted.pth` is converted from the official checkpoint `best_ckpt.pt`. Directly download `best_ckpt_converted.pth` from [modelscope](https://modelscope.cn/models/wokaikaixinxin/ai4rs/resolve/master/bit/best_ckpt_converted.pth).
