@@ -1,7 +1,7 @@
 # IDA-SiamNet  Interactive- and Dynamic-Aware Siamese Network for Building Change Detection (TGRS 2024)
 
 
-> TGRS Link [Remote Sensing Image Change Detection With Transformers](https://ieeexplore.ieee.org/document/10551864)
+> TGRS [Link](https://ieeexplore.ieee.org/document/10551864)
 
 > Official Code [Link](https://github.com/SUPERMAN123000/IDA-SiamNet)
 
@@ -11,11 +11,6 @@
 Building change detection (BCD) is a critical task in remote sensing which aims to identify the building changes within the same geographical area over time. The complexity of BCD is heightened when utilizing very high-resolution (VHR) remote sensing images, leading to two primary challenges: distinguishing between building and nonbuilding changes and accommodating the diverse range of building shapes and sizes. The existing mainstream methods neglect interactions
 between encoders, thereby compromising the ability to recognize building and nonbuilding changes. Additionally, most BCD methods overlook feature alignment and fusion which hinders the precise extraction of buildings with varying shapes and sizes. To address these limitations, we propose an interactiveand dynamic-aware Siamese network (IDA-SiamNet) for BCD. Our method comprises the spatial exchange feature interaction (SEFI) module, the channel exchange feature interaction (CEFI) module, and the dynamic-deformable dual-alignment fusion (D3AF) module. The SEFI and CEFI modules play a pivotal role in facilitating mutual information exchange between Siamese encoders, enhancing discrimination between building and nonbuilding changes. Furthermore, the D3AF module dynamically aggregates multiple parallel convolutional kernels to improve feature alignment and fusion for accurate building outline extraction. D3AF adapts its receptive field (RF) based on object size and covers diverse building shapes without introducing excessive background information. Experimental evaluations on three widely used BCD datasets, learning, vision, and remote sensing change detection (LEVIR-CD), satellite side-looking (S2Looking), and WHU BCD (WHU-CD), demonstrate the superior performance of our proposed method over state-ofthe-art alternatives
 
-<!-- [IMAGE] -->
-
-<div align=center>
-<img src="https://github.com/SUPERMAN123000/IDA-SiamNet/blob/main/README_img/overallframework.svg" width="90%"/>
-</div>
 
 ```bibtex
 @ARTICLE{10551864,
