@@ -136,7 +136,7 @@ Coming soon
 |     |     |     |     |
 | :---: | :---: | :---: | :---: |
 | [FC-EF (ICIP'2018)](./projects/fcsn/README.md) | [FC-Siam-conc (ICIP'2018)](./projects/fcsn/README.md) | [FC-Siam-diff (ICIP'2018)](./projects/fcsn/README.md) |   [Changer (TGRS'2023)](./projects/changer/README.md)  |  
-|  [BiT (TGRS' 2021)](./projects/bit/README.md)   |     |     |     |
+|  [BiT (TGRS' 2021)](./projects/bit/README.md)   |  [IDA-SiamNet (TGRS' 2024)](./projects/idasiamnet/README.md)   |     |     |
 </details>
 
 
