@@ -442,7 +442,8 @@ class RotatedBoxes(BaseBoxes):
         if isinstance(masks, BitmapMasks):
             for idx in range(num_masks):
                 mask = masks.masks[idx]
-                points = np.stack(np.nonzero(mask), axis=-1).astype(np.float32)
+                y_indices, x_indices = np.nonzero(mask)
+                points = np.stack((x_indices, y_indices), axis=-1).astype(np.float32)
                 (x, y), (w, h), angle = cv2.minAreaRect(points)
                 boxes.append([x, y, w, h, angle / 180 * np.pi])
         elif isinstance(masks, PolygonMasks):
