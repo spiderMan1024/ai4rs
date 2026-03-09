@@ -25,6 +25,7 @@ def parse_args():
         type=float,
         default=2,
         help='the interval of show (s)')
+    parser.add_argument('--draw_pred', default=False, action='store_true')
     parser.add_argument(
         '--cfg-options',
         nargs='+',
@@ -77,6 +78,7 @@ def main():
             osp.basename(img_path),
             img,
             data_sample,
+            draw_pred=args.draw_pred,
             show=not args.not_show,
             wait_time=args.show_interval,
             out_file=out_file)
@@ -86,4 +88,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
