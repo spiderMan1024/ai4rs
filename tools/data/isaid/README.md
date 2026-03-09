@@ -94,6 +94,10 @@ If you want to change the folder for reading and saving image, please modify the
 If you want to change the size and the overlap area of the split please modify to the parameters ```--patch_width```, ```--patch_height```, ```--overlap_area``` in [split.py](split.py).
 
 
+7. Visualize the iSAID dataset
+```bash
+python tools/analysis_tools/browse_dataset.py projects/CATNet/configs/cat_mask_rcnn_r50_3x_isaid.py --output-dir your_path/visual_isaid/ --not-show
+```
 
 ## Classes of CODrone
 
