@@ -421,17 +421,19 @@ class ConvertMask2BoxType(BaseTransform):
             results.pop('gt_masks')
 
         # Modify results['instances'] for RotatedCocoMetric
-        converted_instances = []
-        for instance in results['instances']:
-            m = np.array(instance['mask'][0])
-            m = PolygonMasks([[m]], results['ori_shape'][1],
-                             results['ori_shape'][0])
-            instance['bbox'] = self.box_type_cls.from_instance_masks(
-                m).tensor[0].numpy().tolist()
-            if not self.keep_mask:
-                instance.pop('mask')
-            converted_instances.append(instance)
-        results['instances'] = converted_instances
+        if results.get('instances', []):
+            converted_instances = []
+            for instance in results['instances']:
+                m = np.array(instance['mask'][0])
+                m = PolygonMasks([[m]], results['ori_shape'][1],
+                                 results['ori_shape'][0])
+                instance['bbox'] = self.box_type_cls.from_instance_masks(
+                    m).tensor[0].numpy().tolist()
+
+                if not self.keep_mask:
+                    instance.pop('mask')
+                converted_instances.append(instance)
+            results['instances'] = converted_instances
 
         return results
 
