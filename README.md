@@ -140,6 +140,14 @@ Coming soon
 </details>
 
 
+<details open>
+<summary><b>Instance Segmentation</b></summary>
+
+|     |     |     |     |
+| :---: | :---: | :---: | :---: |
+|  [CATNet (TNNLS'2024)](./projects/CATNet/README.md)   |     |     |     |
+</details>
+
 ## Installation ⚙️
 
 To support H2rbox_v2, point2rbox, and mamba, we use **pytorch-2.x**
