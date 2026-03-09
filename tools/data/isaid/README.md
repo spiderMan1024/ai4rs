@@ -15,7 +15,7 @@ pip install natsort -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
 2.  **Dataset preparation**
-    1. Download the iSAID dataset from [iSAID](https://captain-whu.github.io/iSAID/).
+    1. Download the iSAID dataset from [iSAID](https://captain-whu.github.io/iSAID/) or [modelscope](https://modelscope.cn/datasets/wokaikaixinxin/iSAID).
     2. Unzip the dataset to the `data` folder.
     3. Make sure that the final dataset must have this structure:
     ```
