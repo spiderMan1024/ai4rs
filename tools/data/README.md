@@ -17,6 +17,7 @@ Datasets supported in ai4rs:
 - [RSAR Dataset](./rsar/README.md)
 - [FAIR1M Dataset](./fair/README.md) \[ [Homepage](https://www.gaofen-challenge.com/benchmark) \]
 - [ReCon1M Dataset](./recon1m/README.md) \[ [Homepage](https://recon1m-dataset.github.io/) \]
+- [iSAID Dataset](./isaid/README.md) \[ [Homepage](https://captain-whu.github.io/iSAID/) \]
 
 ```
 ai4rs
@@ -89,4 +90,13 @@ ai4rs
 │   │   ├── test
 │   │   │   ├── images
 │   │   │   ├── annfiles
+│   ├── split_isaid
+│   │   ├── train
+│   │   │   ├── images
+│   │   │   ├── instance_only_filtered_train.json
+│   │   ├── val
+│   │   │   ├── images
+│   │   │   ├── instance_only_filtered_val.json
+│   │   ├── test
+│   │   │   ├── images
 ```
