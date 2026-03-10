@@ -41,7 +41,7 @@ Str. RE-CSPNeXt: [ModelScope(魔塔)](https://www.modelscope.cn/models/wokaikaix
 
 |  Model  |   Aug  | mAP  | AP50 | AP75 |lr schd | Params(M) | FLOPS(G) | batch size |                          Config                          |                                                                                                                                                                       Download                                                                                                                                                                       |
 | :---------: |  :---: | :---: | :---: | :---: | :---: | :-------: | :------: | :------------------: | :------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| Appr. MessDet |  RR   | 51.43 | 78.76  | 56.93 | 36e | 13.51  |   32.31  |    8=4gpu*<br>2img/gpu     |        [messdet_appr_4xb2_36e_dota.py](./configs/messdet_appr_4xb2_36e_dota.py)  |  [ModelScope(魔塔)](https://www.modelscope.cn/models/wokaikaixinxin/ai4rs/resolve/master/messdet/messdet_appr_4xb2-36e_dota-e091491e.pth) / [Google](https://drive.google.com/file/d/1w-Q2ZS1z7iRaTqkpvnaodX_-wDgyyYL5/view?usp=sharing) / [Baidu](https://pan.baidu.com/s/1lRBxl3-8ETvnxpqKgbvmOw?pwd=awn7) \| [result](https://www.modelscope.cn/models/wokaikaixinxin/ai4rs/resolve/master/messdet/messdet_appr_4xb2_36e_dota_submission.zip) |
+| Appr. MessDet |  RR   | 51.43 | 78.46  | 56.93 | 36e | 13.51  |   32.31  |    8=4gpu*<br>2img/gpu     |        [messdet_appr_4xb2_36e_dota.py](./configs/messdet_appr_4xb2_36e_dota.py)  |  [ModelScope(魔塔)](https://www.modelscope.cn/models/wokaikaixinxin/ai4rs/resolve/master/messdet/messdet_appr_4xb2-36e_dota-e091491e.pth) / [Google](https://drive.google.com/file/d/1w-Q2ZS1z7iRaTqkpvnaodX_-wDgyyYL5/view?usp=sharing) / [Baidu](https://pan.baidu.com/s/1lRBxl3-8ETvnxpqKgbvmOw?pwd=awn7) \| [result](https://www.modelscope.cn/models/wokaikaixinxin/ai4rs/resolve/master/messdet/messdet_appr_4xb2_36e_dota_submission.zip) |
 
 This is your evaluation result for task 1 (VOC metrics):  
 mAP: 0.7846091868142074  
@@ -54,7 +54,7 @@ mAP: 0.5143371813246235
 **Note**:  
 1. We **do not retrain** this model. We **only evaluate** it.  
 2. The checkpoint is taken from the official code [repository](https://github.com/Nu1sance/MessDet).  
-3. The AP50 we obtained is 78.76, which is slightly higher than the 78.45 reported in the paper.  
+3. The AP50 we obtained is 78.46, which is slightly higher than the 78.45 reported in the paper.  
 4. The number of parameters we measured is 13.51M, whereas the paper reports 15.3M. Please verify this discrepancy yourself.  
 5. The FLOPs were measured on an RTX 2080 Ti.  
 6. It is claimed that the experiments were conducted on 4 GPUs with a batch size of 8. Please verify this yourself. 
