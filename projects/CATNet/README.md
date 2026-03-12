@@ -37,6 +37,9 @@ Single-node multi-GPU, for example 4 gpus:
 bash tools/dist_train.sh projects/CATNet/configs/cat_mask_rcnn_r50_3x_isaid.py 4
 ```
 
+> If an `out-of-memory` error occurs on iSAID dataset, please uncomment [L15-L17](./catnet/isaid.py#L15:L17) in the dataset code and try again. This will filter out a few images with more than 1,000 objects, largely reducing the memory cost.
+
+
 Test
 
 Single-node multi-GPU, for example 4 gpus:
