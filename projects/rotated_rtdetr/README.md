@@ -4,7 +4,7 @@
 
 [github Link]()
 
-** NOTE: O2-RTDETR is earlier than YOLO 26 !!! **
+**NOTE: O2-RTDETR is earlier than YOLO 26 !!!**
 
 ## Abstract
 
