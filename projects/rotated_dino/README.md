@@ -14,6 +14,20 @@ We present DINO (DETR with Improved deNoising anchOr boxes), a state-of-the-art 
 
 ## Results and Models
 
+[rotated_dino_4scale_r50_2xb4_12e_dior.py](./configs/rotated_dino_4scale_r50_2xb4_12e_dior.py)
+
+[rotated_dino_4scale_r50_2xb4_12e_dota.py](./configs/rotated_dino_4scale_r50_2xb4_12e_dota.py)
+
+[rotated_dino_4scale_r50_2xb4_12e_dotav15.py](./configs/rotated_dino_4scale_r50_2xb4_12e_dotav15.py)
+
+[rotated_dino_4scale_r50_2xb4_12e_dotav2.py](./configs/rotated_dino_4scale_r50_2xb4_12e_dotav2.py)
+
+[rotated_dino_4scale_swint_2xb4_12e_dota.py](./configs/rotated_dino_4scale_swint_2xb4_12e_dota.py)
+
+[rotated_dino_4scale_swint_2xb4_12e_dotav15.py](./configs/rotated_dino_4scale_swint_2xb4_12e_dotav15.py)
+
+[rotated_dino_4scale_swint_2xb4_12e_dotav2.py](./configs/rotated_dino_4scale_swint_2xb4_12e_dotav2.py)
+
 Coming soon...
 
 
