@@ -28,10 +28,27 @@ We present DINO (DETR with Improved deNoising anchOr boxes), a state-of-the-art 
 
 [rotated_dino_4scale_swint_2xb4_12e_dotav2.py](./configs/rotated_dino_4scale_swint_2xb4_12e_dotav2.py)
 
-Coming soon...
+Result coming soon...
 
 
+## Training
 
+To train the model(s) in the paper, run this command:
+
+```bash
+# example
+bash tools/dist_train.sh projects/rotated_dino/configs/rotated_dino_4scale_r50_2xb4_12e_dior.py 2
+```
+
+## Evaluation
+
+To evaluate our models on DOTA, run:
+
+```bash
+# example
+bash tools/dist_test.sh projects/rotated_dino/configs/rotated_dino_4scale_r50_2xb4_12e_dior.py your_checkpoint.pth 2
+```
+Evaluation is processed in the [official DOTA evaluation server](https://captain-whu.github.io/DOTA/evaluation.html).
 
 ## Citation
 
