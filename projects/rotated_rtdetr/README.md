@@ -117,3 +117,8 @@ Note: We observed an interesting phenomenon: when training on FAIR1M-v1.0, the m
   keywords={Real-time systems;Transformers;Detectors;Remote sensing;Costs;Training;Accuracy;YOLO;Uncertainty;Noise reduction;Oriented object detection;detection transformer;real-time detector;remote sensing},
   doi={10.1109/TGRS.2026.3671683}}
 ```
+
+
+<div align="center">
+  <img src="https://github.com/wokaikaixinxin/O2-RT-DETR/blob/main/latency.jpg"  width="500"/>
+</div>
