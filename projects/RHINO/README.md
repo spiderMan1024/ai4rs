@@ -4,9 +4,8 @@
 
 [WACV 2025 Link](https://openaccess.thecvf.com/content/WACV2025/html/Lee_Hausdorff_Distance_Matching_with_Adaptive_Query_Denoising_for_Rotated_Detection_WACV_2025_paper.html)
 
-**[SI Analytics](https://www.si-analytics.ai/)**
 
-[Hakjin Lee](https://github.com/nijkah), Minki Song, Jamyoung Koo, [Junghoon Seo](https://scholar.google.co.kr/citations?user=9KBQk-YAAAAJ)
+Author [Hakjin Lee](https://github.com/nijkah), Minki Song, Jamyoung Koo, [Junghoon Seo](https://scholar.google.co.kr/citations?user=9KBQk-YAAAAJ)
 
 
 
