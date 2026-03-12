@@ -5,6 +5,13 @@
 [WACV 2025 Link](https://openaccess.thecvf.com/content/WACV2025/html/Lee_Hausdorff_Distance_Matching_with_Adaptive_Query_Denoising_for_Rotated_Detection_WACV_2025_paper.html)
 
 
+
+## Abstract
+
+Detection Transformers (DETR) have recently set new benchmarks in object detection. However, their performance in detecting rotated objects lags behind established oriented object detectors. Our analysis identifies a key observation: the boundary discontinuity and square-like problem in bipartite matching poses an issue with assigning appropriate ground truths to predictions, leading to duplicate low-confidence predictions. To address this, we introduce a Hausdorff distance-based cost for bipartite matching, which more accurately quantifies the discrepancy between predictions and ground truths. Additionally, we find that a static denoising approach impedes the training of rotated DETR, especially as the quality of the detector's predictions begins to exceed that of the noised ground truths. To overcome this, we propose an adaptive query denoising method that employs bipartite matching to selectively eliminate noised queries that detract from model improvement.
+
+
+
 Author [Hakjin Lee](https://github.com/nijkah), Minki Song, Jamyoung Koo, [Junghoon Seo](https://scholar.google.co.kr/citations?user=9KBQk-YAAAAJ)
 
 
@@ -53,10 +60,6 @@ bash tools/dist_test.sh projects/RHINO/configs/rhino_phc_haus_4scale_r50_2xb4_36
 ```
 Evaluation is processed in the [official DOTA evaluation server](https://captain-whu.github.io/DOTA/evaluation.html).
 
-
-## Abstract
-
-Detection Transformers (DETR) have recently set new benchmarks in object detection. However, their performance in detecting rotated objects lags behind established oriented object detectors. Our analysis identifies a key observation: the boundary discontinuity and square-like problem in bipartite matching poses an issue with assigning appropriate ground truths to predictions, leading to duplicate low-confidence predictions. To address this, we introduce a Hausdorff distance-based cost for bipartite matching, which more accurately quantifies the discrepancy between predictions and ground truths. Additionally, we find that a static denoising approach impedes the training of rotated DETR, especially as the quality of the detector's predictions begins to exceed that of the noised ground truths. To overcome this, we propose an adaptive query denoising method that employs bipartite matching to selectively eliminate noised queries that detract from model improvement.
 
 
 # Bibtex
