@@ -2,7 +2,7 @@
 
 [IEEE TGRS Link](https://ieeexplore.ieee.org/document/11424629)
 
-[github Link]()
+[github Link](https://github.com/wokaikaixinxin/O2-RT-DETR)
 
 **NOTE: O2-RTDETR is earlier than YOLO 26 !!!**
 
