@@ -1,6 +1,8 @@
 # Real-Time Oriented Object Detection Transformer in Remote Sensing Images (TGRS 2026)
 
-[IEEE TGRS Link](https://ieeexplore.ieee.org/document/11424629)
+[IEEE TGRS Xplore](https://ieeexplore.ieee.org/document/11424629)
+
+[Paper PDF](https://github.com/wokaikaixinxin/O2-RT-DETR/blob/main/Real_Time_Oriented_Object_Detection_Transformer_in_Remote_Sensing_Images.pdf)
 
 [github Link](https://github.com/wokaikaixinxin/O2-RT-DETR)
 
