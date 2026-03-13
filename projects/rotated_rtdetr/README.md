@@ -118,6 +118,13 @@ python demo/image_demo.py \
     --out-file /root/demo_result.jpg
 ```
 
+## Params, FLOPs and MACs
+```bash
+PYTHONPATH=. python tools/analysis_tools/get_flops/get_flops.py --config  projects/rotated_rtdetr/configs/o2_rtdetr_r18vd_2xb4_72e_dota.py --shape 1024 1024
+PYTHONPATH=. python tools/analysis_tools/get_flops/get_flops.py --config  projects/rotated_rtdetr/configs/o2_rtdetr_r34vd_2xb4_72e_dota.py --shape 1024 1024
+PYTHONPATH=. python tools/analysis_tools/get_flops/get_flops.py --config  projects/rotated_rtdetr/configs/o2_rtdetr_r50vd_2xb4_72e_dota.py --shape 1024 1024
+```
+
 # Bibtex
 
 ```bibtex
