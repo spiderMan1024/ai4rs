@@ -104,7 +104,11 @@ Note: We observed an interesting phenomenon: when training on FAIR1M-v1.0, the m
 ## Visualization Results Demo
 
 ```bash
-python demo/image_demo.py demo/demo.jpg projects/rotated_rtdetr/configs/o2_rtdetr_r18vd_2xb4_72e_dota.py your_path/epoch_72.pth --out-file /root/demo_result.jpg
+python demo/image_demo.py \
+    demo/demo.jpg \
+    projects/rotated_rtdetr/configs/o2_rtdetr_r18vd_2xb4_72e_dota.py \
+    your_path/epoch_72.pth \
+    --out-file /root/demo_result.jpg
 ```
 
 # Bibtex
