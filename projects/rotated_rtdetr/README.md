@@ -152,3 +152,5 @@ PYTHONPATH=. python tools/analysis_tools/get_flops/get_flops.py \
 <div align="center">
   <img src="https://github.com/wokaikaixinxin/O2-RT-DETR/blob/main/latency.jpg"  width="500"/>
 </div>
+
+![visitors](https://visitor-badge.laobi.icu/badge?page_id=wokaikaixinxin/ai4rs/blob/main/projects/rotated_rtdetr/README.md)
