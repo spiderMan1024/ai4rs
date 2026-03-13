@@ -101,7 +101,11 @@ Note: O2-RTDETR adopts single-scale training and testing on FAIR1M-v1.0, whereas
 
 Note: We observed an interesting phenomenon: when training on FAIR1M-v1.0, the model exhibits a significant overfitting tendency on the training set.
 
+## Visualization Results Demo
 
+```bash
+python demo/image_demo.py demo/demo.jpg projects/rotated_rtdetr/configs/o2_rtdetr_r18vd_2xb4_72e_dota.py your_path/epoch_72.pth --out-file /root/demo_result.jpg
+```
 
 # Bibtex
 
