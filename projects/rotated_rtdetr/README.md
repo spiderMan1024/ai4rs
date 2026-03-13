@@ -101,7 +101,7 @@ bash tools/dist_test.sh projects/rotated_rtdetr/configs/o2_rtdetr_r34vd_2xb4_72e
 
 # o2_rtdetr_r50vd_2xb4_72e_fair1m
 bash tools/dist_train.sh projects/rotated_rtdetr/configs/o2_rtdetr_r50vd_2xb4_72e_fair1m.py 2
-bash tools/dist_test.sh projects/rotated_rtdetr/configs/o2_rtdetr_r50vd_2xb4_72e_fair1m.py your_ckpt 2`
+bash tools/dist_test.sh projects/rotated_rtdetr/configs/o2_rtdetr_r50vd_2xb4_72e_fair1m.py your_ckpt 2
 ```
 
 Note: O2-RTDETR adopts single-scale training and testing on FAIR1M-v1.0, whereas several other methods (e.g., LSKNet, Strip R-CNN, and LegNet) report results based on multi-scale training and testing.
@@ -120,9 +120,17 @@ python demo/image_demo.py \
 
 ## Params, FLOPs and MACs
 ```bash
-PYTHONPATH=. python tools/analysis_tools/get_flops/get_flops.py --config  projects/rotated_rtdetr/configs/o2_rtdetr_r18vd_2xb4_72e_dota.py --shape 1024 1024
-PYTHONPATH=. python tools/analysis_tools/get_flops/get_flops.py --config  projects/rotated_rtdetr/configs/o2_rtdetr_r34vd_2xb4_72e_dota.py --shape 1024 1024
-PYTHONPATH=. python tools/analysis_tools/get_flops/get_flops.py --config  projects/rotated_rtdetr/configs/o2_rtdetr_r50vd_2xb4_72e_dota.py --shape 1024 1024
+PYTHONPATH=. python tools/analysis_tools/get_flops/get_flops.py \
+    --config projects/rotated_rtdetr/configs/o2_rtdetr_r18vd_2xb4_72e_dota.py \
+    --shape 1024 1024
+
+PYTHONPATH=. python tools/analysis_tools/get_flops/get_flops.py \
+    --config projects/rotated_rtdetr/configs/o2_rtdetr_r34vd_2xb4_72e_dota.py \
+    --shape 1024 1024
+
+PYTHONPATH=. python tools/analysis_tools/get_flops/get_flops.py \
+    --config projects/rotated_rtdetr/configs/o2_rtdetr_r50vd_2xb4_72e_dota.py \
+    --shape 1024 1024
 ```
 
 # Bibtex
