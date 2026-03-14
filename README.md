@@ -150,7 +150,8 @@ Coming soon
 |  [CATNet (TNNLS'2024)](./projects/CATNet/README.md)   |     |     |     |
 </details>
 
-## Installation ⚙️
+## Installation ⚙️ [![Bilibili](https://img.shields.io/badge/Installation_Tutorial-fb7299?style=flat-square&logo=bilibili&logoColor=white)](https://www.bilibili.com/video/BV1Ufw4zyEhR/)
+
 
 To support H2rbox_v2, point2rbox, and mamba, we use **pytorch-2.x**
 
