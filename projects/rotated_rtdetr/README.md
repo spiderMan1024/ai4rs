@@ -6,6 +6,9 @@
 
 [github Link](https://github.com/wokaikaixinxin/O2-RT-DETR)
 
+[![Bilibili](https://img.shields.io/badge/Train_Tutorial-fb7299?style=flat-square&logo=bilibili&logoColor=white)](https://www.bilibili.com/video/BV1QQw4zJEot/)
+[![Bilibili](https://img.shields.io/badge/Test_Tutorial-fb7299?style=flat-square&logo=bilibili&logoColor=white)](https://www.bilibili.com/video/BV1Vew8zbEVa/)
+
 **NOTE: O2-RTDETR is earlier than YOLO 26 !!!**
 
 ## Abstract
