@@ -47,7 +47,7 @@ python tools/test.py  projects/FAA/configs/lsk_s_fpn_1x_dota_le90_faahead.py you
 Our proposed modules are designed to be lightweight and highly extensible. You can easily integrate them into your own custom detectors by simply copying the corresponding files.
 
 ### 1. FAAFusion
-**File:** `projects/FAA/faa/faafusion.py`
+**File:** [`projects/FAA/faa/faafusion.py`](./faa/faafusion.py)
 
 `FAAFusion` serves as a plug-and-play module for the feature pyramid network. It dynamically aligns the orientation of the high-level feature map to match the low-level feature map before fusion.
 
@@ -68,7 +68,7 @@ fused_feature = fusion_module(x_high, x_low)
 >**Note**: We also provide FAAFusionFPN in the same file, which is a ready-to-use FPN variant integrating FAAFusion.
 
 ### 2. FAA Head
-**File:** `projects/FAA/faa/faa_head.py`
+**File:** [`projects/FAA/faa/faa_head.py`](./faa/faa_head.py)
 
 `FAAHead` can directly replace standard RoI heads. It explicitly aligns the 7x7 RoI features to a canonical direction using frequency spectrum analysis, effectively alleviating the task conflict between classification and regression.
 
