@@ -57,7 +57,7 @@ We hope to integrate remote sensing related work based on **MMLab**, especially 
 | [RTMDet<br>(arXiv 2022)](configs/rotated_rtmdet/README.md) |[Rotated DiffusionDet<br>(ICCV'2023)](./projects/rotated_DiffusionDet/README.md) | [Rotated DINO<br>(ICLR 2023)](./projects/rotated_dino/README.md)  | [OrientedFormer<br>(TGRS' 2024)](projects/OrientedFormer/README.md) | 
 | [RTDETR<br> (CVPR' 2024)](./projects/rtdetr/README.md) | [ReDiffDet base<br>(CVPR'2025)](./projects/GSDet_baseline/README_ReDiffDet_baseline.md)| [GSDet base<br>(IJCAI'2025)](./projects/GSDet_baseline/README_GSDet_baseline.md)|  [Rotated YOLOMS<br>(TPAMI 2025)](./projects/rotated_yoloms/README.md) |
 |  [MessDet<br>(ICCV'2025)](./projects/MessDet/README.md)   | [AMMBA<br>(TGRS'2025)](./projects/AMMBA/README.md) | [RHINO<br>(WACV'2025)](./projects/RHINO/README.md) | [HERO <br>(AAAI'2026)](./projects/HERO/README.md)  |
-|  [O2-RTDETR<br>(TGRS 2026)](./projects/rotated_rtdetr/README.md)  |     |     |     |
+|  [O2-RTDETR<br>(TGRS' 2026)](./projects/rotated_rtdetr/README.md)  |     |     |     |
 </details>
 
 
@@ -84,7 +84,7 @@ We hope to integrate remote sensing related work based on **MMLab**, especially 
 |       |       |       |       |       |
 | :---: | :---: | :---: | :---: | :---: |
 | [ConvNeXt<br>(CVPR'2022)](./configs/convnext/README.md)| [LSKNet<br>(ICCV'2023)](projects/LSKNet/README.md)  | [ARC<br>(ICCV'2023)](./projects/ARC/README.md)   |   [PKINet<br>(CVPR'2024)](./projects/PKINet/README.md)  |   [SARDet 100K<br>(Nips'2024)](./projects/SARDet_100K/README.md)  | 
-| [GRA<br>(ECCV'2024)](./projects/GRA/README.md) | [LEGNet<br>(ICCVW'2025)](./projects/LEGNet/README.md) | [Strip R-CNN<br>(AAAI'2026)](./projects/Strip_RCNN/README.md)   |  [LWGANet<br>(AAAI'2026)](./projects/LWGANet/README.md)    |       |       
+| [GRA<br>(ECCV'2024)](./projects/GRA/README.md) | [LEGNet<br>(ICCVW'2025)](./projects/LEGNet/README.md) | [Strip R-CNN<br>(AAAI'2026)](./projects/Strip_RCNN/README.md)   |  [LWGANet<br>(AAAI'2026)](./projects/LWGANet/README.md)    |  [Fourier Angle Align<br>(CVPR'2026)](./projects/FAA/README.md)     |       
 </details>
 
 
