@@ -14,7 +14,6 @@ In remote sensing rotated object detection, mainstream methods suffer from two b
 
 ## 🚀 Results and Configs
 
-Here we provide the configuration files for FAA applied to different baseline detectors.
 
 ### DOTA-v1.0
 | Model |      mAP      | Angle | lr schd | Config |
@@ -28,7 +27,6 @@ python tools/train.py projects/FAA/configs/lsk_s_fpn_1x_dota_le90_faa.py
 
 ### FAA Head Only (DOTA-v1.0)
 
-Specifically, we also provide the configurations that only apply the FAA Head.
 
 | Model |      mAP      | Angle | lr schd | Config | Download |
 | :--- |:-------------:| :---: | :---: | :--- | :---: |
