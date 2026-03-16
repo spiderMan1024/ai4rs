@@ -137,6 +137,12 @@ PYTHONPATH=. python tools/analysis_tools/get_flops/get_flops.py \
     --shape 1024 1024
 ```
 
+## Deploy
+
+[deploy_o2_rtdetr.md](../easydeploy/deploy_o2_rtdetr.md)
+
+Bilibili Deploy Tutorial: [![Bilibili](https://img.shields.io/badge/Deploy_Tutorial-fb7299?style=flat-square&logo=bilibili&logoColor=white)](https://www.bilibili.com/video/BV1VmwLzWExY/)
+
 # Bibtex
 
 ```bibtex
