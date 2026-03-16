@@ -5,7 +5,7 @@
 
 #### Install ai4rs
 
-Please follow the [installation guide](../README.md#installation-%EF%B8%8F) to install ai4rs.
+Please follow the [installation guide](https://github.com/wokaikaixinxin/ai4rs?tab=readme-ov-file#installation-%EF%B8%8F-) to install ai4rs.
 
 #### Install onnx
 
