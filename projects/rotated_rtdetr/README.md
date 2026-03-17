@@ -6,9 +6,13 @@
 
 [github Link](https://github.com/wokaikaixinxin/O2-RT-DETR)
 
-Bilibili Train Tutorial: [![Bilibili](https://img.shields.io/badge/Train_Tutorial-fb7299?style=flat-square&logo=bilibili&logoColor=white)](https://www.bilibili.com/video/BV1QQw4zJEot/)
-Bilibili Test Tutorial: [![Bilibili](https://img.shields.io/badge/Test_Tutorial-fb7299?style=flat-square&logo=bilibili&logoColor=white)](https://www.bilibili.com/video/BV1Vew8zbEVa/)
-Bilibili Deploy Tutorial: [![Bilibili](https://img.shields.io/badge/Deploy_Tutorial-fb7299?style=flat-square&logo=bilibili&logoColor=white)](https://www.bilibili.com/video/BV1VmwLzWExY/)
+[Arxiv](https://arxiv.org/abs/2603.15497)
+
+
+Bilibili Install Tutorial:[![Bilibili](https://img.shields.io/badge/Installation_Tutorial-fb7299?style=flat-square&logo=bilibili&logoColor=white)](https://www.bilibili.com/video/BV1Ufw4zyEhR/)
+Train Tutorial: [![Bilibili](https://img.shields.io/badge/Train_Tutorial-fb7299?style=flat-square&logo=bilibili&logoColor=white)](https://www.bilibili.com/video/BV1QQw4zJEot/)
+Test Tutorial: [![Bilibili](https://img.shields.io/badge/Test_Tutorial-fb7299?style=flat-square&logo=bilibili&logoColor=white)](https://www.bilibili.com/video/BV1Vew8zbEVa/)
+Deploy Tutorial: [![Bilibili](https://img.shields.io/badge/Deploy_Tutorial-fb7299?style=flat-square&logo=bilibili&logoColor=white)](https://www.bilibili.com/video/BV1VmwLzWExY/)
 
 **NOTE: O2-RTDETR is earlier than YOLO 26 !!!**
 
