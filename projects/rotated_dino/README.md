@@ -14,21 +14,14 @@ We present DINO (DETR with Improved deNoising anchOr boxes), a state-of-the-art 
 
 ## Results and Models
 
-[rotated_dino_4scale_r50_2xb4_12e_dior.py](./configs/rotated_dino_4scale_r50_2xb4_12e_dior.py)
 
-[rotated_dino_4scale_r50_2xb4_12e_dota.py](./configs/rotated_dino_4scale_r50_2xb4_12e_dota.py)
+**DIOR-R (Single-Scale Training and Testing)**
 
-[rotated_dino_4scale_r50_2xb4_12e_dotav15.py](./configs/rotated_dino_4scale_r50_2xb4_12e_dotav15.py)
+| Method | Backbone | AP50 | Config | Download |
+| :----: | :------: | :--: | :-----: | :------: |
+|rotated dino| R50 (800,800) | 65.78 |    [rotated_dino_4scale_r50_2xb4_12e_dior](./configs/rotated_dino_4scale_r50_2xb4_12e_dior.py)      |  [12th_epoch](https://modelscope.cn/models/wokaikaixinxin/ai4rs/resolve/master/rotated_dino/rotated_dino_4scale_r50_2xb4_12e_dior/epoch_12.pth) \| [log](https://modelscope.cn/models/wokaikaixinxin/ai4rs/resolve/master/rotated_dino/rotated_dino_4scale_r50_2xb4_12e_dior/20260316_235449/20260316_235449.log) \| [all_ckpt](https://modelscope.cn/models/wokaikaixinxin/ai4rs/tree/master/rotated_dino/rotated_dino_4scale_r50_2xb4_12e_dior) |
 
-[rotated_dino_4scale_r50_2xb4_12e_dotav2.py](./configs/rotated_dino_4scale_r50_2xb4_12e_dotav2.py)
 
-[rotated_dino_4scale_swint_2xb4_12e_dota.py](./configs/rotated_dino_4scale_swint_2xb4_12e_dota.py)
-
-[rotated_dino_4scale_swint_2xb4_12e_dotav15.py](./configs/rotated_dino_4scale_swint_2xb4_12e_dotav15.py)
-
-[rotated_dino_4scale_swint_2xb4_12e_dotav2.py](./configs/rotated_dino_4scale_swint_2xb4_12e_dotav2.py)
-
-Result coming soon...
 
 
 ## Training
@@ -42,13 +35,11 @@ bash tools/dist_train.sh projects/rotated_dino/configs/rotated_dino_4scale_r50_2
 
 ## Evaluation
 
-To evaluate our models on DOTA, run:
 
 ```bash
 # example
 bash tools/dist_test.sh projects/rotated_dino/configs/rotated_dino_4scale_r50_2xb4_12e_dior.py your_checkpoint.pth 2
 ```
-Evaluation is processed in the [official DOTA evaluation server](https://captain-whu.github.io/DOTA/evaluation.html).
 
 ## Citation
 
