@@ -8,6 +8,7 @@ from mmdet.utils import InstanceList, reduce_mean
 from mmdet.models.dense_heads import DINOHead
 from .varifocal_loss import VarifocalLoss
 
+
 class RTDETRHead(DINOHead):
     r"""Head of the DETRs Beat YOLOs on Real-time Object Detection
 
@@ -18,11 +19,34 @@ class RTDETRHead(DINOHead):
     <https://arxiv.org/abs/2304.08069>`_ .
     """
 
-    def forward(self, hidden_states: List[Tensor],
-                references: List[Tensor]) -> Tuple[Tensor, Tensor]:
-        all_layers_outputs_classes = hidden_states
-        all_layers_outputs_coords = references
-        return all_layers_outputs_classes, all_layers_outputs_coords
+    def forward(self, hidden_states: List[Tuple[int, Tensor]],
+                references: Tuple[List[Tensor], List[Tensor]]) -> Tuple[List[Tensor], List[Tensor]]:
+        """Forward function.
+
+        Args:
+            hidden_states (list[tuple[int, Tensor]): Hidden states output from
+                each decoder layer. Each tensor has shape
+                (bs, num_queries, dim).
+            references (list[list[Tensor], list[Tensor]]): List of the tuple of
+                score and reference from the decoder. Each `reference` has
+                shape (bs, num_queries, 4). The coordinates are arranged as
+                (cx, cy, w, h). Each `score` has shape
+                (bs, num_queries, num_classes).
+            mask_features (Tensor): instance mask features that has shape
+                (bs, dim, h, w).
+
+        Returns:
+            tuple[Tensor]: results of head containing the following tensor.
+
+            - all_layers_outputs_classes (Tensor): Outputs from the
+              classification head, has shape (num_decoder_layers, bs,
+              num_queries, cls_out_channels).
+            - all_layers_outputs_coords (Tensor): Sigmoid outputs from the
+              regression head with normalized coordinate format (cx, cy, w,
+              h), has shape (num_decoder_layers, bs, num_queries, 4) with the
+              last dimension arranged as (cx, cy, w, h).
+        """
+        return tuple(references)
 
     @staticmethod
     def split_outputs(all_layers_cls_scores: List[Tensor],
@@ -91,7 +115,7 @@ class RTDETRHead(DINOHead):
             num_total_pos * 1.0 + num_total_neg * self.bg_cls_weight
         if self.sync_cls_avg_factor:
             cls_avg_factor = reduce_mean(
-                cls_scores.new_tensor([cls_avg_factor]))
+                cls_scores.new_tensor([cls_avg_factor])).item()
         cls_avg_factor = max(cls_avg_factor, 1)
 
         if len(cls_scores) > 0:
@@ -123,8 +147,12 @@ class RTDETRHead(DINOHead):
 
         # Compute the average number of gt boxes across all gpus, for
         # normalization purposes
-        num_total_pos = loss_cls.new_tensor([num_total_pos])
-        num_total_pos = torch.clamp(reduce_mean(num_total_pos), min=1).item()
+        if self.bg_cls_weight == 0:
+            num_total_pos = cls_avg_factor
+        else:
+            num_total_pos = dn_bbox_preds.new_tensor([num_total_pos])
+            num_total_pos = torch.clamp(
+                reduce_mean(num_total_pos), min=1).item()
 
         # construct factors used for rescale bboxes
         factors = []
@@ -193,7 +221,7 @@ class RTDETRHead(DINOHead):
             num_total_neg * self.bg_cls_weight
         if self.sync_cls_avg_factor:
             cls_avg_factor = reduce_mean(
-                cls_scores.new_tensor([cls_avg_factor]))
+                cls_scores.new_tensor([cls_avg_factor])).item()
         cls_avg_factor = max(cls_avg_factor, 1)
 
         if isinstance(self.loss_cls, VarifocalLoss):
@@ -218,8 +246,12 @@ class RTDETRHead(DINOHead):
 
         # Compute the average number of gt boxes across all gpus, for
         # normalization purposes
-        num_total_pos = loss_cls.new_tensor([num_total_pos])
-        num_total_pos = torch.clamp(reduce_mean(num_total_pos), min=1).item()
+        if self.bg_cls_weight == 0:
+            num_total_pos = cls_avg_factor
+        else:
+            num_total_pos = bbox_preds.new_tensor([num_total_pos])
+            num_total_pos = torch.clamp(
+                reduce_mean(num_total_pos), min=1).item()
 
         # construct factors used for rescale bboxes
         factors = []

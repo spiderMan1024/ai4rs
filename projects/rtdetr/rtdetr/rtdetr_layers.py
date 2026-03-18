@@ -4,10 +4,12 @@ from typing import List, Optional, Tuple, Union
 from torch import Tensor, nn
 import torch
 import numpy as np
-from mmengine.model import BaseModule
+from mmengine.logging import print_log
+from mmengine.model import BaseModule, ModuleList
 from mmcv.cnn import ConvModule, build_norm_layer
 from mmdet.models.layers.transformer.detr_layers import DetrTransformerEncoder
 from mmdet.models.layers.transformer.dino_layers import DinoTransformerDecoder
+from mmdet.models.layers.transformer.deformable_detr_layers import DeformableDetrTransformerDecoderLayer
 from mmdet.registry import MODELS
 from mmdet.utils import ConfigType, OptConfigType, OptMultiConfig
 from .utils import MLP
@@ -219,6 +221,7 @@ class RepVGGBlock(nn.Module):
         """Switch to deploy mode."""
         if hasattr(self, 'rbr_reparam'):
             return
+        print_log('RepVGGBlock switch to deploy mode.')
         kernel, bias = self.get_equivalent_kernel_bias()
         self.rbr_reparam = nn.Conv2d(
             in_channels=self.rbr_dense.conv.in_channels,
@@ -338,6 +341,8 @@ class RTDETRFPN(BaseModule):
             list[:obj:`ConfigDict`], optional): Initialization config dict.
     """
 
+    csp_block = CSPLayer
+
     def __init__(
         self,
         in_channels: List[int] = [256, 256, 256],
@@ -374,7 +379,7 @@ class RTDETRFPN(BaseModule):
                     norm_cfg=norm_cfg,
                     act_cfg=act_cfg))
             self.top_down_blocks.append(
-                CSPLayer(
+                self.csp_block(
                     in_channels[idx - 1] * 2,
                     in_channels[idx - 1],
                     num_blocks=num_csp_blocks,
@@ -398,7 +403,7 @@ class RTDETRFPN(BaseModule):
                     norm_cfg=norm_cfg,
                     act_cfg=act_cfg))
             self.bottom_up_blocks.append(
-                CSPLayer(
+                self.csp_block(
                     in_channels[idx] * 2,
                     in_channels[idx + 1],
                     num_blocks=num_csp_blocks,
@@ -417,12 +422,6 @@ class RTDETRFPN(BaseModule):
                     conv_cfg=conv_cfg,
                     norm_cfg=norm_cfg,
                     act_cfg=None))
-
-    def init_weights(self):
-        super().init_weights()
-        for m in self.out_convs.modules():
-            if isinstance(m, nn.Conv2d):
-                nn.init.xavier_uniform_(m.weight)
 
     def forward(self, inputs: Tuple[Tensor]) -> Tuple[Tensor]:
         """
@@ -497,6 +496,7 @@ class RTDETRHybridEncoder(BaseModule):
                  pe_temperature: float = 10000.0,
                  spatial_shapes: Optional[Tuple[Tuple[int, int]]] = None,
                  encode_before_fpn: bool = True,
+                 with_cp: bool = False,
                  fpn_cfg: OptConfigType = None,
                  init_cfg: OptMultiConfig = None) -> None:
         super().__init__(init_cfg=init_cfg)
@@ -505,14 +505,22 @@ class RTDETRHybridEncoder(BaseModule):
         self.pe_temperature = pe_temperature
         self.encode_before_fpn = encode_before_fpn
 
+        if isinstance(num_encoder_layers, int):
+            num_encoder_layers = (num_encoder_layers, ) * len(
+                self.use_encoder_idx)
+        else:
+            assert isinstance(num_encoder_layers, (tuple, list))
+            assert len(num_encoder_layers) == len(self.use_encoder_idx)
+
         # fpn layer
         self.fpn = MODELS.build(fpn_cfg) \
             if fpn_cfg is not None else nn.Identity()
 
         # encoder transformer
         self.transformer_blocks = nn.ModuleList([
-            DetrTransformerEncoder(num_encoder_layers, layer_cfg)
-            for _ in range(len(use_encoder_idx))
+            DetrTransformerEncoder(num_layers, layer_cfg,
+                                   num_layers if with_cp else -1)
+            for num_layers in num_encoder_layers
         ])
 
         if spatial_shapes is not None:
@@ -581,8 +589,8 @@ class RTDETRHybridEncoder(BaseModule):
                     device=src_flatten.device)
             memory = self.transformer_blocks[i](
                 src_flatten, query_pos=pos_embed, key_padding_mask=None)
-            outs[enc_ind] = memory.permute(0, 2, 1).contiguous().reshape(
-                b, c, h, w)
+            outs[enc_ind] = memory.permute(0, 2,
+                                           1).contiguous().reshape(b, c, h, w)
 
         return tuple(outs)
 
@@ -598,7 +606,14 @@ class RTDETRTransformerDecoder(DinoTransformerDecoder):
 
     def _init_layers(self) -> None:
         """Initialize decoder layers."""
-        super()._init_layers()
+        self.layers = ModuleList([
+            DeformableDetrTransformerDecoderLayer(**self.layer_cfg)
+            for _ in range(self.num_layers)
+        ])
+        self.embed_dims = self.layers[0].embed_dims
+        if self.post_norm_cfg is not None:
+            raise ValueError('There is not post_norm in '
+                             f'{self._get_name()}')
         self.ref_point_head = MLP(4, self.embed_dims * 2, self.embed_dims, 2)
         self.norm = nn.Identity()  # without norm
 
@@ -662,6 +677,7 @@ class RTDETRTransformerDecoder(DinoTransformerDecoder):
             eval_idx = eval_idx + self.num_layers
             assert eval_idx >= 0
 
+        hidden_states = []
         all_layers_outputs_classes = []
         all_layers_outputs_coords = []
         for lid, layer in enumerate(self.layers):
@@ -683,7 +699,10 @@ class RTDETRTransformerDecoder(DinoTransformerDecoder):
             tmp = reg_branches[lid](query)
 
             if self.training or lid == eval_idx:
-                all_layers_outputs_classes.append(cls_branches[lid](query))
+                norm_query = self.norm(query)
+                hidden_states.append((lid, norm_query))
+                all_layers_outputs_classes.append(
+                    cls_branches[lid](norm_query))
                 all_layers_outputs_coords.append(
                     (tmp + unact_reference_points).sigmoid())
 
@@ -693,4 +712,5 @@ class RTDETRTransformerDecoder(DinoTransformerDecoder):
             unact_reference_points = tmp + unact_reference_points.detach()
             reference_points = unact_reference_points.sigmoid().detach()
 
-        return all_layers_outputs_classes, all_layers_outputs_coords
+        return hidden_states, (all_layers_outputs_classes,
+                               all_layers_outputs_coords)
