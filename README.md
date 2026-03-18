@@ -153,7 +153,7 @@ Coming soon
 ## Installation ⚙️ [![Bilibili](https://img.shields.io/badge/Installation_Tutorial-fb7299?style=flat-square&logo=bilibili&logoColor=white)](https://www.bilibili.com/video/BV1Ufw4zyEhR/)
 
 
-To support H2rbox_v2, point2rbox, and mamba, we use **pytorch-2.x**. Successfully installed on P100, RTX 2080ti, RTX 3090, RTX 4090, and RTX 5090.
+To support H2rbox_v2, point2rbox, and mamba, we use **pytorch-2.x**.
 
 
 **Step 1:** Install Anaconda or Miniconda
