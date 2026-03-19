@@ -98,7 +98,7 @@ class RotatedRTDETRTransformerDecoder(RotatedDinoTransformerDecoder):
             tmp = reg_branches[lid](query)
 
             if self.training or lid == eval_idx:
-                hidden_states.append((lid, query))
+                hidden_states.append(query)
                 all_layers_outputs_classes.append(cls_branches[lid](query))
                 all_layers_outputs_coords.append(
                     (tmp + inverse_sigmoid(reference_points, eps=1e-3)).sigmoid())
