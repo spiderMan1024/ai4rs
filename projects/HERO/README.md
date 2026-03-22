@@ -2,6 +2,10 @@
 
 [Official github](https://github.com/Qian-CV/HERO-Det)
 
+[AAAI 2026 Link](https://ojs.aaai.org/index.php/AAAI/article/view/37753)
+
+[PDF Link](https://ojs.aaai.org/index.php/AAAI/article/view/37753/41715)
+
 🤷‍♂️🤷‍♀️[Qi Ming*](https://github.com/ming71), [Liuqian Wang*](https://github.com/Qian-CV), Juan Fang†, Xudong Zhao†, Yucheng Xu, Ziyi Teng, Yue Zhou, Xiaoxi Hu, Xiaohan Zhang, Yufei Guo
 
 ![](https://github.com/Qian-CV/HERO-Det/blob/main/doc/fig1.png)
@@ -17,8 +21,8 @@ This repository is the official implementation of “Hilbert Curve-Encoded Rotat
 
 | Model |  mAP  | Angle | lr schd | Batch Size | AUG |                          Configs                          |          Download          |
 | :---: |:-----:| :---: | :-----: |:----------:| :---: |:--------------------------------------------------------:|:--------------------------:|
-| HERO <br>(ResNet-50, FPN) | 79.56 | le90 | 3x |     4    | none | [HERO-3x](./configs/hero_le90_r50_fpn_3x_dota.py) | come soon |
-| HERO <br>(ResNet-50, FPN) | 79.56 | le90 | 3x |     4   | MS  | [HERO-3x](./configs/hero_le90_r50_fpn_3x_dota-ms.py) | come soon |
+| HERO <br>(ResNet-50, FPN) | -     | le90 | 3x |     4   | none | [HERO-3x](./configs/hero_le90_r50_fpn_3x_dota.py) | come soon |
+| HERO <br>(ResNet-50, FPN) | 79.56 | le90 | 3x |     4   | MS   | [HERO-3x](./configs/hero_le90_r50_fpn_3x_dota-ms.py) | come soon |
 
 Notes:
 - We will release checkpoints soon. You can place your files in `tools/model_weight/` and update the links above.
