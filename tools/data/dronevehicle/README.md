@@ -45,7 +45,7 @@ The 5 classes.
 ```
 'classes':
 (
-    'feright_car', 'car', 'truck', 'bus', 'van'
+    'car', 'freight car', 'truck', 'bus', 'van'
 )
 ```
 
@@ -71,11 +71,11 @@ In DroneVehicle, to annotate the objects at the image boundaries, we set a white
 ``` 
 
 <div align=center>
-<img src="https://github.com/VisDrone/DroneVehicle/blob/master/labelsamples.png", width=800 />
+<img src="https://github.com/VisDrone/DroneVehicle/blob/master/labelsamples.png" />
 </div>
 
 <div align=center>
-<img src="https://github.com/VisDrone/DroneVehicle/raw/master/dataset_sample.png", width=800 />
+<img src="https://github.com/VisDrone/DroneVehicle/raw/master/dataset_sample.png" />
 </div>
 
 
