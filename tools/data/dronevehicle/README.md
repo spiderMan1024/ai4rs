@@ -57,16 +57,6 @@ The DroneVehicle dataset consists of a total of 56,878 images collected by the d
 
 In DroneVehicle, to annotate the objects at the image boundaries, we set a white border with a width of 100 pixels on the top, bottom, left and right of each image, so that the downloaded image scale is 840 x 712. When training our detection network, we can perform pre-processing to remove the surrounding white border and change the image scale to 640 x 512.
 
-
-<div align=center>
-<img src="https://github.com/VisDrone/DroneVehicle/blob/master/labelsamples.png" />
-</div>
-
-<div align=center>
-<img src="https://github.com/VisDrone/DroneVehicle/raw/master/dataset_sample.png" />
-</div>
-
-
 ```bibtex
 @article{sun2022drone,
   title={Drone-based RGB-infrared cross-modality vehicle detection via uncertainty-aware learning},
@@ -79,3 +69,13 @@ In DroneVehicle, to annotate the objects at the image boundaries, we set a white
   publisher={IEEE}
 }
 ``` 
+
+<div align=center>
+<img src="https://github.com/VisDrone/DroneVehicle/blob/master/labelsamples.png", width=800 />
+</div>
+
+<div align=center>
+<img src="https://github.com/VisDrone/DroneVehicle/raw/master/dataset_sample.png", width=800 />
+</div>
+
+
