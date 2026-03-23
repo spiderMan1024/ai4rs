@@ -1,4 +1,4 @@
-# Preparing DroneVehicle Dataset
+# Preparing DroneVehicle Dataset (TCSVT'2022)
 
 >[Drone-based RGB-Infrared Cross-Modality Vehicle Detection via Uncertainty-Aware Learning](https://arxiv.org/abs/2003.02437)
 
