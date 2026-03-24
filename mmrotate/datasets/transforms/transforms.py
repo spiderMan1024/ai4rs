@@ -6,6 +6,7 @@ import cv2
 import mmcv
 import numpy as np
 from mmcv.transforms import BaseTransform, to_tensor
+from mmcv.transforms import CenterCrop as MMCV_CenterCrop
 from mmcv.transforms.utils import cache_randomness
 from mmdet.structures.bbox import BaseBoxes, get_box_type
 from mmdet.structures.mask import PolygonMasks
@@ -522,3 +523,46 @@ class RegularizeRotatedBox(BaseTransform):
         results['gt_bboxes'] = self.box_type(
             results['gt_bboxes'].regularize_boxes(self.angle_version))
         return results
+
+@TRANSFORMS.register_module()
+class CenterCrop(MMCV_CenterCrop):
+
+    def _crop_bboxes(self, results: dict, bboxes: np.ndarray) -> None:
+        """Update bounding boxes according to CenterCrop.
+
+        Args:
+            results (dict): Result dict contains the data to transform.
+            bboxes (np.ndarray): Shape (4, ), location of cropped bboxes.
+        """
+        if 'gt_bboxes' in results:
+            offset_w = bboxes[0]
+            offset_h = bboxes[1]
+            gt_bboxes = results['gt_bboxes']
+            last_dim = gt_bboxes.shape[-1]
+            img_h, img_w = results['img'].shape[:2]
+
+            if last_dim == 4:
+                # (tl_x, tl_y, br_x, br_y)
+                bbox_offset = np.array([offset_w, offset_h,offset_w, offset_h],
+                                       dtype=gt_bboxes.dtype)
+                gt_bboxes -= bbox_offset
+
+                if self.clip_object_border:
+                    gt_bboxes[:, 0::2] = np.clip(gt_bboxes[:, 0::2], 0, img_w)
+                    gt_bboxes[:, 1::2] = np.clip(gt_bboxes[:, 1::2], 0, img_h)
+
+            elif last_dim == 5:
+                # (cx, cy, w, h, angle)
+                gt_bboxes.tensor[:, 0] -= offset_w
+                gt_bboxes.tensor[:, 1] -= offset_h
+
+                if self.clip_object_border:
+                    raise NotImplementedError
+
+            elif last_dim == 8:
+                # (x1, y1, x2, y2, x3, y3, x4, y4)
+                bbox_offset = torch.tensor([offset_w, offset_h] * 4, dtype=gt_bboxes.dtype)
+                gt_bboxes.tensor -= bbox_offset
+
+                if self.clip_object_border:
+                    raise NotImplementedError

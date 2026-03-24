@@ -1,7 +1,8 @@
 from .loading import LoadPatchFromNDArray
 from .transforms import (ConvertBoxType, ConvertMask2BoxType,
                          RandomChoiceRotate, RandomRotate, Rotate,
-                         ConvertWeakSupervision, RegularizeRotatedBox)
+                         ConvertWeakSupervision, RegularizeRotatedBox,
+                         CenterCrop)
 from .loading_cd import (MultiImgLoadAnnotations, MultiImgLoadImageFromFile,
                          MultiImgLoadInferencerLoader,
                          MultiImgLoadLoadImageFromNDArray)
@@ -20,7 +21,7 @@ __all__ = [
 
     'Rotate', 'RandomRotate',
     'RandomChoiceRotate', 'ConvertBoxType', 'ConvertMask2BoxType',
-    'ConvertWeakSupervision', 'RegularizeRotatedBox',
+    'ConvertWeakSupervision', 'RegularizeRotatedBox', 'CenterCrop',
 
     'MultiImgLoadAnnotations', 'MultiImgLoadImageFromFile',
     'MultiImgLoadInferencerLoader', 'MultiImgLoadLoadImageFromNDArray',
