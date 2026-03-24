@@ -125,6 +125,11 @@ Note: We observed an interesting phenomenon: when training on FAIR1M-v1.0, the m
 |O2-RTDETR|  RGB     | R34vd (640,512) | 72.65 | 45.97 |  36   |  16  | [o2_rtdetr_r34vd_2xb8_36e_dv_rgb](./configs/o2_rtdetr_r34vd_2xb8_36e_dronevehicle_rgb.py) | [36th](https://modelscope.cn/models/wokaikaixinxin/ai4rs/resolve/master/o2_rtdetr/o2_rtdetr_r34vd_2xb8_36e_dronevehicle_rgb/epoch_36.pth) \| [log](https://modelscope.cn/models/wokaikaixinxin/ai4rs/resolve/master/o2_rtdetr/o2_rtdetr_r34vd_2xb8_36e_dronevehicle_rgb/20260323_213225/20260323_213225.log) \| [all_ckpt](https://modelscope.cn/models/wokaikaixinxin/ai4rs/tree/master/o2_rtdetr/o2_rtdetr_r34vd_2xb8_36e_dronevehicle_rgb) |
 |O2-RTDETR|  RGB     | R50vd (640,512) | 73.69 | 47.37 |  36   |  16  | [o2_rtdetr_r50vd_2xb8_36e_dv_rgb](./configs/o2_rtdetr_r50vd_2xb8_36e_dronevehicle_rgb.py) | [36th](https://modelscope.cn/models/wokaikaixinxin/ai4rs/resolve/master/o2_rtdetr/o2_rtdetr_r50vd_2xb8_36e_dronevehicle_rgb/epoch_36.pth) \| [log](https://modelscope.cn/models/wokaikaixinxin/ai4rs/resolve/master/o2_rtdetr/o2_rtdetr_r50vd_2xb8_36e_dronevehicle_rgb/20260323_213937/20260323_213937.log) \| [all_ckpt](https://modelscope.cn/models/wokaikaixinxin/ai4rs/tree/master/o2_rtdetr/o2_rtdetr_r50vd_2xb8_36e_dronevehicle_rgb) |
 
+```bash
+# for example
+bash tools/dist_train.sh projects/rotated_rtdetr/configs/o2_rtdetr_r18vd_2xb8_36e_dronevehicle_rgb.py 2
+```
+
 Note: These models (dronevehicle) are trained on the training set and evaluated on the test set, without using a validation set.
 
 
