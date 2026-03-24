@@ -102,12 +102,6 @@ bash tools/dist_test.sh projects/rotated_rtdetr/configs/o2_rtdetr_r50vd_2xb4_72e
 |O2-RTDETR| R50vd (1024,1024,200) | 43.14 |    [o2_rtdetr_r50vd_2xb4_72e_fair1m](./configs/o2_rtdetr_r50vd_2xb4_72e_fair1m.py)      |  [18th_epoch](https://modelscope.cn/models/wokaikaixinxin/ai4rs/resolve/master/o2_rtdetr/o2_rtdetr_r50vd_2xb4_72e_fair1m/epoch_18.pth) \| [log](https://modelscope.cn/models/wokaikaixinxin/ai4rs/resolve/master/o2_rtdetr/o2_rtdetr_r50vd_2xb4_72e_fair1m/20251110_214150/20251110_214150.log) \| [all_ckpt](https://modelscope.cn/models/wokaikaixinxin/ai4rs/tree/master/o2_rtdetr/o2_rtdetr_r50vd_2xb4_72e_fair1m) \| [submit](https://modelscope.cn/models/wokaikaixinxin/ai4rs/resolve/master/o2_rtdetr/o2_rtdetr_r50vd_2xb4_72e_fair1m/fair1m_epoch_18.zip) |
 
 
-**DroneVehicle**
-
-| Method  | Modal | Backbone        | AP50  | mAP  | ep. |  bs  | Config  | Download |
-| :-----: | :-----:  | :------:        | :--:  | :--: |  :--: | :--: | :-----: | :------: |
-|O2-RTDETR|  RGB     | R18vd (640,512) | 70.95 | 44.86|  36   |  16  | [o2_rtdetr_r18vd_2xb8_36e_dv_rgb](./configs/o2_rtdetr_r18vd_2xb8_36e_dronevehicle_rgb.py) | []()
-
 ```bash
 # o2_rtdetr_r34vd_2xb4_72e_fair1m
 bash tools/dist_train.sh projects/rotated_rtdetr/configs/o2_rtdetr_r34vd_2xb4_72e_fair1m.py 2
@@ -121,6 +115,14 @@ bash tools/dist_test.sh projects/rotated_rtdetr/configs/o2_rtdetr_r50vd_2xb4_72e
 Note: O2-RTDETR adopts single-scale training and testing on FAIR1M-v1.0, whereas several other methods (e.g., LSKNet, Strip R-CNN, and LegNet) report results based on multi-scale training and testing.
 
 Note: We observed an interesting phenomenon: when training on FAIR1M-v1.0, the model exhibits a significant overfitting tendency on the training set.
+
+
+**DroneVehicle**
+
+| Method  | Modal | Backbone        | AP50  | mAP  | ep. |  bs  | Config  | Download |
+| :-----: | :-----:  | :------:        | :--:  | :--: |  :--: | :--: | :-----: | :------: |
+|O2-RTDETR|  RGB     | R18vd (640,512) | 70.95 | 44.86|  36   |  16  | [o2_rtdetr_r18vd_2xb8_36e_dv_rgb](./configs/o2_rtdetr_r18vd_2xb8_36e_dronevehicle_rgb.py) | [36th](https://modelscope.cn/models/wokaikaixinxin/ai4rs/resolve/master/o2_rtdetr/o2_rtdetr_r18vd_2xb8_36e_dronevehicle_rgb/epoch_36.pth) \| [log](https://modelscope.cn/models/wokaikaixinxin/ai4rs/resolve/master/o2_rtdetr/o2_rtdetr_r18vd_2xb8_36e_dronevehicle_rgb/20260323_144051/20260323_144051.log) \| [all_ckpt](https://modelscope.cn/models/wokaikaixinxin/ai4rs/tree/master/o2_rtdetr/o2_rtdetr_r18vd_2xb8_36e_dronevehicle_rgb) |
+
 
 ## Visualization Results Demo
 
