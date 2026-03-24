@@ -102,6 +102,12 @@ bash tools/dist_test.sh projects/rotated_rtdetr/configs/o2_rtdetr_r50vd_2xb4_72e
 |O2-RTDETR| R50vd (1024,1024,200) | 43.14 |    [o2_rtdetr_r50vd_2xb4_72e_fair1m](./configs/o2_rtdetr_r50vd_2xb4_72e_fair1m.py)      |  [18th_epoch](https://modelscope.cn/models/wokaikaixinxin/ai4rs/resolve/master/o2_rtdetr/o2_rtdetr_r50vd_2xb4_72e_fair1m/epoch_18.pth) \| [log](https://modelscope.cn/models/wokaikaixinxin/ai4rs/resolve/master/o2_rtdetr/o2_rtdetr_r50vd_2xb4_72e_fair1m/20251110_214150/20251110_214150.log) \| [all_ckpt](https://modelscope.cn/models/wokaikaixinxin/ai4rs/tree/master/o2_rtdetr/o2_rtdetr_r50vd_2xb4_72e_fair1m) \| [submit](https://modelscope.cn/models/wokaikaixinxin/ai4rs/resolve/master/o2_rtdetr/o2_rtdetr_r50vd_2xb4_72e_fair1m/fair1m_epoch_18.zip) |
 
 
+**DroneVehicle**
+
+| Method  | Modality | Backbone        | AP50  | mAP  | epoch |  bs  | Config  | Download |
+| :-----: | :-----:  | :------:        | :--:  | :--: |  :--: | :--: | :-----: | :------: |
+|O2-RTDETR|  RGB     | R18vd (640,512) | 70.95 | 44.86|  36   |  16  | [o2_rtdetr_r18vd_2xb8_36e_dronevehicle_rgb](./configs/o2_rtdetr_r18vd_2xb8_36e_dronevehicle_rgb.py) | []()
+
 ```bash
 # o2_rtdetr_r34vd_2xb4_72e_fair1m
 bash tools/dist_train.sh projects/rotated_rtdetr/configs/o2_rtdetr_r34vd_2xb4_72e_fair1m.py 2
