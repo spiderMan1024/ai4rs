@@ -18,6 +18,7 @@ Datasets supported in ai4rs:
 - [FAIR1M Dataset](./fair/README.md) \[ [Homepage](https://www.gaofen-challenge.com/benchmark) \]
 - [ReCon1M Dataset](./recon1m/README.md) \[ [Homepage](https://recon1m-dataset.github.io/) \]
 - [iSAID Dataset](./isaid/README.md) \[ [Homepage](https://captain-whu.github.io/iSAID/) \]
+- [DroneVehicle Dataset](./dronevehicle/README.md)
 
 ```
 ai4rs
@@ -99,4 +100,20 @@ ai4rs
 │   │   │   ├── instance_only_filtered_val.json
 │   │   ├── test
 │   │   │   ├── images
+│   ├── DroneVehicle
+│   │   ├── train
+│   │   │   │   ├── trainimg    # 17990 jpg
+│   │   │   │   ├── trainimgr   # 17990 jpg
+│   │   │   │   ├── trainlabel  # 17990 xml
+│   │   │   │   ├── trainlabelr # 17990 xml
+│   │   ├── val
+│   │   │   │   ├── valimg      # 1469 jpg
+│   │   │   │   ├── valimgr     # 1469 jpg
+│   │   │   │   ├── vallabel    # 1469 xml
+│   │   │   │   ├── vallabelr   # 1469 xml
+│   │   ├── test
+│   │   │   │   ├── testimg     # 8980 jpg
+│   │   │   │   ├── testimgr    # 8980 jpg
+│   │   │   │   ├── testlabel   # 8980 xml
+│   │   │   │   ├── testlabelr  # 8980 xml
 ```
