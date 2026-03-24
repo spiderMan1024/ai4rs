@@ -104,9 +104,9 @@ bash tools/dist_test.sh projects/rotated_rtdetr/configs/o2_rtdetr_r50vd_2xb4_72e
 
 **DroneVehicle**
 
-| Method  | Modality | Backbone        | AP50  | mAP  | epoch |  bs  | Config  | Download |
+| Method  | Modal | Backbone        | AP50  | mAP  | ep. |  bs  | Config  | Download |
 | :-----: | :-----:  | :------:        | :--:  | :--: |  :--: | :--: | :-----: | :------: |
-|O2-RTDETR|  RGB     | R18vd (640,512) | 70.95 | 44.86|  36   |  16  | [o2_rtdetr_r18vd_2xb8_36e_dronevehicle_rgb](./configs/o2_rtdetr_r18vd_2xb8_36e_dronevehicle_rgb.py) | []()
+|O2-RTDETR|  RGB     | R18vd (640,512) | 70.95 | 44.86|  36   |  16  | [o2_rtdetr_r18vd_2xb8_36e_dv_rgb](./configs/o2_rtdetr_r18vd_2xb8_36e_dronevehicle_rgb.py) | []()
 
 ```bash
 # o2_rtdetr_r34vd_2xb4_72e_fair1m
