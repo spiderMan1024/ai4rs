@@ -64,7 +64,7 @@ The DroneVehicle dataset consists of a total of 56,878 images collected by the d
 In DroneVehicle, to annotate the objects at the image boundaries, we set a white border with a width of 100 pixels on the top, bottom, left and right of each image, so that the downloaded image scale is 840 x 712. When training our detection network, we can perform pre-processing to remove the surrounding white border and change the image scale to 640 x 512.
 
 
-# Some results
+## Some results
 
 | Method  | Modal | Backbone        | AP50  | mAP  | ep. |  bs  | Config  | Download |
 | :-----: | :-----:  | :------:        | :--:  | :--: |  :--: | :--: | :-----: | :------: |
