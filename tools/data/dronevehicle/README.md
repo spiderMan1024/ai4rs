@@ -50,6 +50,12 @@ The 5 classes.
 ```
 
 
+## Visual dataset
+```
+python tools/analysis_tools/browse_dataset.py your_config --out-dir your_path
+# for example
+# PYTHONPATH=. python tools/analysis_tools/browse_dataset.py projects/rotated_rtdetr/configs/o2_rtdetr_r50vd_2xb8_36e_dronevehicle_rgb.py --output-dir /root/visual_dronevehicle
+```
 
 ## Description
 
