@@ -64,10 +64,7 @@ class RotatedRTDETRTransformerDecoder(RotatedDinoTransformerDecoder):
         assert self.return_intermediate
         assert reg_branches is not None
         assert reference_points.shape[-1] == 5
-        # To avoid inverse_sigmoid, remove .sigmoid() in pre_decoder
-        # So reference_points is unactivated reference_points
-        # unact_reference_points = reference_points
-        # reference_points = unact_reference_points.sigmoid()
+        # Reference_points have been processed through sigmoid() in pre_decoder().
 
         eval_idx = kwargs.pop('eval_idx', -1)
         if eval_idx < 0:
