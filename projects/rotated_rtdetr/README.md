@@ -140,9 +140,9 @@ Note: These models (dronevehicle) are trained on the training set and evaluated 
 
 **RSAR**
 
-|      Backbone      |        Model        |  mAP  |  AP50 | AP75 |   ep.  |  bs  | Config | Download |
-| :----------: | :------------: | :---: | :----: | :----: | :----: |:-------: | :--: | :-----: | :---------------: |
-| Res18vd<br> (800,800) |  O2-RTDETR     | 39.54 | 73.31 | 36.92 |  36 |  16   | [o2_rtdetr_r18vd_2xb8_36e_rsar](./configs/o2_rtdetr_r18vd_2xb8_36e_rsar.py) | [36th](https://modelscope.cn/models/wokaikaixinxin/ai4rs/resolve/master/o2_rtdetr/o2_rtdetr_r18vd_2xb8_36e_rsar/epoch_36.pth) \|  [all ckpt](https://modelscope.cn/models/wokaikaixinxin/ai4rs/tree/master/o2_rtdetr/o2_rtdetr_r18vd_2xb8_36e_rsar) \|  [log](https://modelscope.cn/models/wokaikaixinxin/ai4rs/resolve/master/o2_rtdetr/o2_rtdetr_r18vd_2xb8_36e_rsar/20260325_205614/20260325_205614.log) |
+| Backbone | Model | mAP | AP50 | AP75 | ep. | bs | Config | Download |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :--- | :--- |
+| Res18vd (800,800) | O2-RTDETR | 39.54 | 73.31 | 36.92 | 36 | 16 | [o2_rtdetr_r18vd_2xb8_36e_rsar](./configs/o2_rtdetr_r18vd_2xb8_36e_rsar.py) | [36th](https://modelscope.cn/models/wokaikaixinxin/ai4rs/resolve/master/o2_rtdetr/o2_rtdetr_r18vd_2xb8_36e_rsar/epoch_36.pth) \| [all ckpt](https://modelscope.cn/models/wokaikaixinxin/ai4rs/tree/master/o2_rtdetr/o2_rtdetr_r18vd_2xb8_36e_rsar) \| [log](https://modelscope.cn/models/wokaikaixinxin/ai4rs/resolve/master/o2_rtdetr/o2_rtdetr_r18vd_2xb8_36e_rsar/20260325_205614/20260325_205614.log) |
 
 ## Visualization Results Demo
 
