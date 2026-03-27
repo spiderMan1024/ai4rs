@@ -138,6 +138,12 @@ bash tools/dist_train.sh projects/rotated_rtdetr/configs/o2_rtdetr_r18vd_2xb8_36
 Note: These models (dronevehicle) are trained on the training set and evaluated on the test set, without using a validation set.
 
 
+**RSAR**
+
+|      Backbone      |        Model        |  mAP  |  AP50 | AP75 | Angle  |  lr schd  |  BS  | Config | Download |
+| :----------: | :------------: | :---: | :----: | :----: | :----: |:-------: | :--: | :-----: | :---------------: |
+| Res18vd<br> (800,800) |  [O2-RTDETR](../../../projects/rotated_rtdetr/README.md)     | **39.54** | **73.31** | **36.92** | `0-pi` | `3x` |  16=2gpu*<br>8img/gpu   | [config](../../../projects/rotated_rtdetr/configs/o2_rtdetr_r18vd_2xb8_36e_rsar.py) | [36th](https://modelscope.cn/models/wokaikaixinxin/ai4rs/resolve/master/o2_rtdetr/o2_rtdetr_r18vd_2xb8_36e_rsar/epoch_36.pth) \| <br> [all ckpt](https://modelscope.cn/models/wokaikaixinxin/ai4rs/tree/master/o2_rtdetr/o2_rtdetr_r18vd_2xb8_36e_rsar) \| <br> [log](https://modelscope.cn/models/wokaikaixinxin/ai4rs/resolve/master/o2_rtdetr/o2_rtdetr_r18vd_2xb8_36e_rsar/20260325_205614/20260325_205614.log) |
+
 ## Visualization Results Demo
 
 ```bash
