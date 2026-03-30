@@ -279,7 +279,7 @@ class RotatedDETRHead(DETRHead):
             if scale_factor.shape[0] == 4:
                 # angle should not be rescaled
                 scale_factor = np.append(scale_factor, 1)
-            det_bboxes /= det_bboxes.new_tensor(scale_factor).repeat((1, 1))
+            det_bboxes /= det_bboxes.new_tensor(scale_factor)
 
         results = InstanceData()
         results.bboxes = det_bboxes
