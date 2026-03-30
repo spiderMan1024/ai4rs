@@ -71,7 +71,7 @@ Note: use your own path! Note: use your own path!
 #### Lantency, use trtexec
 
 ```
-/root/TensorRT-10.10.0.31/bin/trtexec --avgRuns=1000 --useSpinWait --loadEngine=/root/ai4rs/work_dirs/easydeploy/o2_rtdetr/epoch_72.engine                               |
+/root/TensorRT-10.10.0.31/bin/trtexec --avgRuns=1000 --useSpinWait --loadEngine=/root/ai4rs/work_dirs/easydeploy/o2_rtdetr/epoch_72.engine
 ```
 
 #### Visual
