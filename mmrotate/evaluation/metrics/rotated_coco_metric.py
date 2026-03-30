@@ -174,7 +174,12 @@ class RotatedCocoMetric(CocoMetric):
             for ann in gt_dict['anns']:
                 label = ann['bbox_label']
                 bbox = ann['bbox']
-                coco_bbox = qbox2rbox_list(bbox)
+                if len(bbox) == 5:
+                    coco_bbox = bbox
+                elif len(bbox) == 8:
+                    coco_bbox = qbox2rbox_list(bbox)
+                else:
+                    raise NotImplementedError('bbox format error! Only support rbox and qbox format.')
 
                 annotation = dict(
                     id=len(annotations) +
