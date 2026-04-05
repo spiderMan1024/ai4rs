@@ -14,7 +14,7 @@ We present a conceptually simple, flexible, and general framework for object ins
 
 ## Results and Models
 
-**NWPU**
+**NWPU VHR-10**
 
 | Backbone | Lr schd | box AP | box AP50 | box AP75 | mask AP | mask AP50 | mask AP75 | Config | Download |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
