@@ -19,6 +19,7 @@ Datasets supported in ai4rs:
 - [ReCon1M Dataset](./recon1m/README.md) \[ [Homepage](https://recon1m-dataset.github.io/) \]
 - [iSAID Dataset](./isaid/README.md) \[ [Homepage](https://captain-whu.github.io/iSAID/) \]
 - [DroneVehicle Dataset](./dronevehicle/README.md)
+- [NWPU VHR-10 Dataset](./nwpu/README.md)
 
 ```
 ai4rs
