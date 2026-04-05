@@ -1,4 +1,4 @@
-# NWPU VHR-10
+# NWPU VHR-10 (ISPRS 2014)
 
 Download the NWPU VHR-10 dataset from [NWPU VHR-10](https://github.com/KyanChen/RSPrompter/tree/release/data/NWPU).
 
