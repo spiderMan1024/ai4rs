@@ -18,7 +18,7 @@ We present a conceptually simple, flexible, and general framework for object ins
 
 | Backbone | Lr schd | box AP | box AP50 | box AP75 | mask AP | mask AP50 | mask AP75 | Config | Download |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
-| R-50-FPN | 2x | 67.1 | 92.0 | 78.6 | 65.8 | 91.6 | 72.1 | [config](./configs/mask-rcnn_r50_fpn_2x_nwpu.py) | [model](https://modelscope.cn/models/wokaikaixinxin/ai4rs/resolve/master/mask_rcnn/mask_rcnn_r50_fpn_2x_nwpu/epoch_24.pth) \| [log](https://modelscope.cn/models/wokaikaixinxin/ai4rs/resolve/master/mask_rcnn/mask_rcnn_r50_fpn_2x_nwpu/20260403_141226/20260403_141226.log) \| [all ckpt](https://modelscope.cn/models/wokaikaixinxin/ai4rs/tree/master/mask_rcnn/mask_rcnn_r50_fpn_2x_nwpu) |
+| R-50-FPN | 2x | 67.1 | 92.0 | 78.6 | 65.8 | 91.6 | 72.1 | [config](./configs/mask_rcnn_r50_fpn_2x_nwpu.py) | [model](https://modelscope.cn/models/wokaikaixinxin/ai4rs/resolve/master/mask_rcnn/mask_rcnn_r50_fpn_2x_nwpu/epoch_24.pth) \| [log](https://modelscope.cn/models/wokaikaixinxin/ai4rs/resolve/master/mask_rcnn/mask_rcnn_r50_fpn_2x_nwpu/20260403_141226/20260403_141226.log) \| [all ckpt](https://modelscope.cn/models/wokaikaixinxin/ai4rs/tree/master/mask_rcnn/mask_rcnn_r50_fpn_2x_nwpu) |
 
 
 ## Citation
