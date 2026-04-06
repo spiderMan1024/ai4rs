@@ -14,13 +14,18 @@ We present DINO (DETR with Improved deNoising anchOr boxes), a state-of-the-art 
 
 ## Results and Models
 
+**DOTA-v1.0 (Single-Scale Training and Testing)**
+
+| Method | Backbone | AP50 | epoch | Config | Download |
+| :----: | :------: | :--: | :-----: | :-----: | :------: |
+|rotated dino| R50 (1024,1024,200) | 72.80 | 12ep |   [rotated_dino_4scale_r50_2xb2_12e_dota](./configs/rotated_dino_4scale_r50_2xb2_12e_dota.py)      |  [12th_epoch](https://modelscope.cn/models/wokaikaixinxin/ai4rs/resolve/master/rotated_dino/rotated_dino_4scale_r50_2xb2_12e_dota/epoch_12.pth) \| [log](https://modelscope.cn/models/wokaikaixinxin/ai4rs/resolve/master/rotated_dino/rotated_dino_4scale_r50_2xb2_12e_dota/20250919_223722/20250919_223722.log) \| [all_ckpt](https://modelscope.cn/models/wokaikaixinxin/ai4rs/tree/master/rotated_dino/rotated_dino_4scale_r50_2xb2_12e_dota) \| [submit](https://modelscope.cn/models/wokaikaixinxin/ai4rs/resolve/master/rotated_dino/rotated_dino_4scale_r50_2xb2_12e_dota/Task1.zip) |
+
 
 **DIOR-R (Single-Scale Training and Testing)**
 
-| Method | Backbone | AP50 | Config | Download |
-| :----: | :------: | :--: | :-----: | :------: |
-|rotated dino| R50 (800,800) | 65.78 |    [rotated_dino_4scale_r50_2xb4_12e_dior](./configs/rotated_dino_4scale_r50_2xb4_12e_dior.py)      |  [12th_epoch](https://modelscope.cn/models/wokaikaixinxin/ai4rs/resolve/master/rotated_dino/rotated_dino_4scale_r50_2xb4_12e_dior/epoch_12.pth) \| [log](https://modelscope.cn/models/wokaikaixinxin/ai4rs/resolve/master/rotated_dino/rotated_dino_4scale_r50_2xb4_12e_dior/20260316_235449/20260316_235449.log) \| [all_ckpt](https://modelscope.cn/models/wokaikaixinxin/ai4rs/tree/master/rotated_dino/rotated_dino_4scale_r50_2xb4_12e_dior) |
-
+| Method | Backbone | AP50 | epoch | Config | Download |
+| :----: | :------: | :--: | :-----: | :-----: | :------: |
+|rotated dino| R50 (800,800) | 65.78 | 12ep | [rotated_dino_4scale_r50_2xb4_12e_dior](./configs/rotated_dino_4scale_r50_2xb4_12e_dior.py)      |  [12th_epoch](https://modelscope.cn/models/wokaikaixinxin/ai4rs/resolve/master/rotated_dino/rotated_dino_4scale_r50_2xb4_12e_dior/epoch_12.pth) \| [log](https://modelscope.cn/models/wokaikaixinxin/ai4rs/resolve/master/rotated_dino/rotated_dino_4scale_r50_2xb4_12e_dior/20260316_235449/20260316_235449.log) \| [all_ckpt](https://modelscope.cn/models/wokaikaixinxin/ai4rs/tree/master/rotated_dino/rotated_dino_4scale_r50_2xb4_12e_dior) |
 
 
 
