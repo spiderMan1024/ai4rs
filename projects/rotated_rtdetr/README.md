@@ -64,6 +64,10 @@ bash tools/dist_test.sh projects/rotated_rtdetr/configs/o2_rtdetr_r18vd_2xb4_coc
 |O2-RTDETR| R50vd (1024,1024,200) | 73.76 |    [o2_rtdetr_r50vd_4xb2_72e_dotav15](./configs/o2_rtdetr_r50vd_4xb2_72e_dotav15.py)      |  [72th_epoch](https://modelscope.cn/models/wokaikaixinxin/ai4rs/resolve/master/o2_rtdetr/o2_rtdetr_r50vd_4xb2_72e_dotav15/epoch_72.pth) \| [log](https://modelscope.cn/models/wokaikaixinxin/ai4rs/resolve/master/o2_rtdetr/o2_rtdetr_r50vd_4xb2_72e_dotav15/20251108_230750/20251108_230750.log) \| [all_ckpt](https://modelscope.cn/models/wokaikaixinxin/ai4rs/tree/master/o2_rtdetr/o2_rtdetr_r50vd_4xb2_72e_dotav15) \| [submit](https://modelscope.cn/models/wokaikaixinxin/ai4rs/resolve/master/o2_rtdetr/o2_rtdetr_r50vd_4xb2_72e_dotav15/Task1.zip) |
 
 ```bash
+# o2_rtdetr_r18vd_4xb1_72e_dotav15
+bash tools/dist_train.sh projects/rotated_rtdetr/configs/o2_rtdetr_r18vd_4xb1_72e_dotav15.py 4
+bash tools/dist_test.sh projects/rotated_rtdetr/configs/o2_rtdetr_r18vd_4xb1_72e_dotav15.py your_ckpt 4
+
 # o2_rtdetr_r34vd_4xb2_72e_dotav15
 bash tools/dist_train.sh projects/rotated_rtdetr/configs/o2_rtdetr_r34vd_4xb2_72e_dotav15.py 4
 bash tools/dist_test.sh projects/rotated_rtdetr/configs/o2_rtdetr_r34vd_4xb2_72e_dotav15.py your_ckpt 4
