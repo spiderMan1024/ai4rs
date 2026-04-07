@@ -29,7 +29,7 @@
 
 </div>
 
-<img src="resources/vis.png" width="100%"/>
+<img src="https://github.com/earth-insights/SegEarth-OV-3/blob/main/resources/vis.png" width="100%"/>
 
 > Inference results of SegEarth-OV3 on a remote sensing image exceeding 10k×10k resolution. The image originates from [OpenMapCD](https://zenodo.org/records/14028095).
 
