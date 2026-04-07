@@ -119,7 +119,7 @@ Coming soon
 
 |     |     |     |     |
 | :---: | :---: | :---: | :---: |
-| [SAM (ICCV'2023)](./projects/segment_anything/README.md) | [MMRotate SAM](./projects/mmrotate-sam/README.md) |  |   |
+| [SAM (ICCV'2023)](./projects/segment_anything/README.md) | [MMRotate SAM](./projects/mmrotate-sam/README.md) | [SAM3](./projects/sam3/README.md) | [SegEarth-OV3](./projects/SegEarth_OV_3/README.md)  |
 </details>
 
 
@@ -148,6 +148,14 @@ Coming soon
 |     |     |     |     |
 | :---: | :---: | :---: | :---: |
 | [Mask RCNN (ICCV'2017)](./projects/mask_rcnn/README.md) |  [CATNet (TNNLS'2024)](./projects/CATNet/README.md)   |     |     |
+</details>
+
+<details open>
+<summary><b>Semantic Segmentation</b></summary>
+
+|     |     |     |     |
+| :---: | :---: | :---: | :---: |
+| [SegEarth-OV3](./projects/SegEarth_OV_3/README.md) |     |     |     |
 </details>
 
 
