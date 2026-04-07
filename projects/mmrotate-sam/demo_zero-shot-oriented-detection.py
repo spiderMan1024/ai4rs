@@ -14,7 +14,7 @@ from mmengine.structures import InstanceData
 from mmrotate.structures import RotatedBoxes
 from mmrotate.utils import register_all_modules
 from mmrotate.visualization import RotLocalVisualizer
-from segment_anything import SamPredictor, sam_model_registry
+from projects.segment_anything import SamPredictor, sam_model_registry
 
 
 def parse_args():

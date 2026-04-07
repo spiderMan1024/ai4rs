@@ -14,11 +14,6 @@ Script Descriptions:
 
 The project is refer to [playground](https://github.com/open-mmlab/playground).
 
-## Installation
-
-```shell
-pip install git+https://gitee.com/mirrors/segment-anything.git
-```
 
 ## Usage
 

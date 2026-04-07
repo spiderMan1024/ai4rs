@@ -16,7 +16,7 @@ from mmengine.structures import InstanceData
 from mmengine.utils import ProgressBar
 from mmrotate.structures import RotatedBoxes
 from mmrotate.utils import register_all_modules
-from segment_anything import SamPredictor, sam_model_registry
+from projects.segment_anything import SamPredictor, sam_model_registry
 
 
 def parse_args():
