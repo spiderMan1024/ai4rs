@@ -55,7 +55,7 @@ python ./projects/sam2_ai4rs/demo_zero-shot-oriented-detection.py  ./demo/dota_d
 ```
 
 <div align=center>
-<img src="https://user-images.githubusercontent.com/79644233/231568599-58694ec9-a3b1-44a4-833f-74cfb4d4ca45.png"/>
+<img src="https://github.com/user-attachments/assets/209d52b1-80e7-45e6-b112-c96164a4fd47"  width="800"/>
 </div>
 
 2. Evaluate the quantitative evaluation metric on DOTA data set.
