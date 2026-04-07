@@ -1,15 +1,3 @@
-## Latest updates -- SAM 2: Segment Anything in Images and Videos
-
-Please check out our new release on [**Segment Anything Model 2 (SAM 2)**](https://github.com/facebookresearch/segment-anything-2).
-
-* SAM 2 code: https://github.com/facebookresearch/segment-anything-2
-* SAM 2 demo: https://sam2.metademolab.com/
-* SAM 2 paper: https://arxiv.org/abs/2408.00714
-
- ![SAM 2 architecture](https://github.com/facebookresearch/segment-anything-2/blob/main/assets/model_diagram.png?raw=true)
-
-**Segment Anything Model 2 (SAM 2)** is a foundation model towards solving promptable visual segmentation in images and videos. We extend SAM to video by considering images as a video with a single frame. The model design is a simple transformer architecture with streaming memory for real-time video processing. We build a model-in-the-loop data engine, which improves model and data via user interaction, to collect [**our SA-V dataset**](https://ai.meta.com/datasets/segment-anything-video), the largest video segmentation dataset to date. SAM 2 trained on our data provides strong performance across a wide range of tasks and visual domains.
-
 # Segment Anything
 
 **[Meta AI Research, FAIR](https://ai.facebook.com/research/)**
@@ -18,13 +6,13 @@ Please check out our new release on [**Segment Anything Model 2 (SAM 2)**](https
 
 [[`Paper`](https://ai.facebook.com/research/publications/segment-anything/)] [[`Project`](https://segment-anything.com/)] [[`Demo`](https://segment-anything.com/demo)] [[`Dataset`](https://segment-anything.com/dataset/index.html)] [[`Blog`](https://ai.facebook.com/blog/segment-anything-foundation-model-image-segmentation/)] [[`BibTeX`](#citing-segment-anything)]
 
-![SAM design](assets/model_diagram.png?raw=true)
+![SAM design](https://github.com/facebookresearch/segment-anything/blob/main/assets/model_diagram.png)
 
 The **Segment Anything Model (SAM)** produces high quality object masks from input prompts such as points or boxes, and it can be used to generate masks for all objects in an image. It has been trained on a [dataset](https://segment-anything.com/dataset/index.html) of 11 million images and 1.1 billion masks, and has strong zero-shot performance on a variety of segmentation tasks.
 
 <p float="left">
-  <img src="assets/masks1.png?raw=true" width="37.25%" />
-  <img src="assets/masks2.jpg?raw=true" width="61.5%" /> 
+  <img src="https://github.com/facebookresearch/segment-anything/blob/main/assets/masks1.png" width="37.25%" />
+  <img src="https://github.com/facebookresearch/segment-anything/blob/main/assets/masks2.jpg" width="61.5%" /> 
 </p>
 
 ## Installation
@@ -80,8 +68,8 @@ python scripts/amg.py --checkpoint <path/to/checkpoint> --model-type <model_type
 See the examples notebooks on [using SAM with prompts](/notebooks/predictor_example.ipynb) and [automatically generating masks](/notebooks/automatic_mask_generator_example.ipynb) for more details.
 
 <p float="left">
-  <img src="assets/notebook1.png?raw=true" width="49.1%" />
-  <img src="assets/notebook2.png?raw=true" width="48.9%" />
+  <img src="https://github.com/facebookresearch/segment-anything/blob/main/assets/notebook1.png" width="49.1%" />
+  <img src="https://github.com/facebookresearch/segment-anything/blob/main/assets/notebook2.png" width="48.9%" />
 </p>
 
 ## ONNX Export
