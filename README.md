@@ -119,7 +119,7 @@ Coming soon
 
 |     |     |     |     |
 | :---: | :---: | :---: | :---: |
-| [SAM (ICCV'2023)](./projects/segment_anything/README.md) | [MMRotate SAM](./projects/mmrotate-sam/README.md) | [SAM3](./projects/sam3/README.md) | [SegEarth-OV3](./projects/SegEarth_OV_3/README.md)  |
+| [SAM (ICCV'2023)](./projects/segment_anything/README.md) | [MMRotate SAM](./projects/mmrotate-sam/README.md) | [SAM3 (Arxiv'2025)](./projects/sam3/README.md) | [SegEarth-OV3 (Arxiv'2025)](./projects/SegEarth_OV_3/README.md)  |
 </details>
 
 
@@ -155,7 +155,7 @@ Coming soon
 
 |     |     |     |     |
 | :---: | :---: | :---: | :---: |
-| [SegEarth-OV3](./projects/SegEarth_OV_3/README.md) |     |     |     |
+| [SegEarth-OV3 (Arxiv'2025)](./projects/SegEarth_OV_3/README.md) |     |     |     |
 </details>
 
 
