@@ -162,10 +162,11 @@ Aaron Adcock, Vaibhav Aggarwal, Morteza Behrooz, Cheng-Yang Fu, Ashley Gabriel, 
 If you use SAM or SA-1B in your research, please use the following BibTeX entry.
 
 ```
-@article{kirillov2023segany,
-  title={Segment Anything},
-  author={Kirillov, Alexander and Mintun, Eric and Ravi, Nikhila and Mao, Hanzi and Rolland, Chloe and Gustafson, Laura and Xiao, Tete and Whitehead, Spencer and Berg, Alexander C. and Lo, Wan-Yen and Doll{\'a}r, Piotr and Girshick, Ross},
-  journal={arXiv:2304.02643},
+@inproceedings{kirillov2023segment,
+  title={Segment anything},
+  author={Kirillov, Alexander and Mintun, Eric and Ravi, Nikhila and Mao, Hanzi and Rolland, Chloe and Gustafson, Laura and Xiao, Tete and Whitehead, Spencer and Berg, Alexander C and Lo, Wan-Yen and others},
+  booktitle={Proceedings of the IEEE/CVF international conference on computer vision},
+  pages={4015--4026},
   year={2023}
 }
 ```
