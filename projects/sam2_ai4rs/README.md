@@ -9,8 +9,8 @@ The project folder holds codes related to ai4rs and SAM2.
 
 Script Descriptions:
 
-1. `eval_zero-shot-oriented-detection_dota.py` implement Zero-shot Oriented Object Detection with SAM. It prompts SAM with predicted boxes from a horizontal object detector.
-2. `demo_zero-shot-oriented-detection.py` inference single image for Zero-shot Oriented Object Detection with SAM.
+1. `eval_zero-shot-oriented-detection_dota.py` implement Zero-shot Oriented Object Detection with SAM2. It prompts SAM2 with predicted boxes from a horizontal object detector.
+2. `demo_zero-shot-oriented-detection.py` inference single image for Zero-shot Oriented Object Detection with SAM2.
 3. `data_builder` holds configuration information and process of dataset, dataloader.
 
 The project is refer to [playground](https://github.com/open-mmlab/playground).
