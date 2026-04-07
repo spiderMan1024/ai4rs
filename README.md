@@ -119,7 +119,7 @@ Coming soon
 
 |     |     |     |     |
 | :---: | :---: | :---: | :---: |
-| [MMRotate SAM](./projects/mmrotate-sam/README.md) |  |   |     |   
+| [SAM (ICCV'2023)](./projects/segment_anything/README.md) | [MMRotate SAM](./projects/mmrotate-sam/README.md) |  |   |
 </details>
 
 
