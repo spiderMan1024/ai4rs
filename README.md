@@ -119,8 +119,11 @@ Coming soon
 
 |     |     |     |     |
 | :---: | :---: | :---: | :---: |
-| [SAM (ICCV'2023)](./projects/segment_anything/README.md) | [MMRotate SAM (git 2023)](./projects/mmrotate-sam/README.md) | [SAM2 (Arxiv'2024)](./projects/sam2/README.md) | [SAM2 ai4rs (git'2026)](./projects/sam2_ai4rs/README.md) |
-| [SAM2.1 (git'2024)](./projects/sam2/README.md) | [SAM2.1 ai4rs (git'2026)](./projects/sam2_1_ai4rs/README.md) | [SAM3 (Arxiv'2025)](./projects/sam3/README.md) | [SegEarth-ov3 (Arxiv'2025)](./projects/SegEarth_OV_3/README.md)  |
+| [SAM (ICCV'2023)](./projects/segment_anything/README.md) | [MMRotate SAM (git 2023)](./projects/mmrotate-sam/README.md) | 
+  [Grounded SAM (Arxiv'2024)](./projects/grounded_sam/README.md) | Grounded SAM2 |
+|[SAM2 (Arxiv'2024)](./projects/sam2/README.md) | [SAM2 ai4rs (git'2026)](./projects/sam2_ai4rs/README.md) |
+ [SAM2.1 (git'2024)](./projects/sam2/README.md) | [SAM2.1 ai4rs (git'2026)](./projects/sam2_1_ai4rs/README.md) |
+ | [SAM3 (Arxiv'2025)](./projects/sam3/README.md) | [SegEarth-ov3 (Arxiv'2025)](./projects/SegEarth_OV_3/README.md)  | | |
 </details>
 
 
