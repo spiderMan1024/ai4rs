@@ -56,7 +56,7 @@ We hope to integrate remote sensing related work based on **MMLab**, especially 
 | [Rotated YOLOX <br>(arXiv 2021)](./projects/rotated_yolox/README.md) | [Rotated Deformable DETR <br> (ICLR'2021)](./projects/rotated_deformable_detr/README.md) |[SASM<br>(AAAI'2022)](configs/sasm_reppoints/README.md) | [Oriented RepPoints<br>(CVPR'2022)](configs/oriented_reppoints/README.md) |  
 | [RTMDet<br>(arXiv 2022)](configs/rotated_rtmdet/README.md) |[Rotated DiffusionDet<br>(ICCV'2023)](./projects/rotated_DiffusionDet/README.md) | [Rotated DINO<br>(ICLR 2023)](./projects/rotated_dino/README.md)  | [OrientedFormer<br>(TGRS' 2024)](projects/OrientedFormer/README.md) | 
 | [RTDETR<br> (CVPR' 2024)](./projects/rtdetr/README.md) | [ReDiffDet base<br>(CVPR'2025)](./projects/GSDet_baseline/README_ReDiffDet_baseline.md)| [GSDet base<br>(IJCAI'2025)](./projects/GSDet_baseline/README_GSDet_baseline.md)|  [Rotated YOLOMS<br>(TPAMI 2025)](./projects/rotated_yoloms/README.md) |
-|  [MessDet<br>(ICCV'2025)](./projects/MessDet/README.md)   | [AMMBA<br>(TGRS'2025)](./projects/AMMBA/README.md) | [RHINO<br>(WACV'2025)](./projects/RHINO/README.md) |  [RQFormer<ESWA'2025>](https://github.com/wokaikaixinxin/RQFormer) |
+|  [MessDet<br>(ICCV'2025)](./projects/MessDet/README.md)   | [AMMBA<br>(TGRS'2025)](./projects/AMMBA/README.md) | [RHINO<br>(WACV'2025)](./projects/RHINO/README.md) |  [RQFormer<br>(ESWA'2025)](https://github.com/wokaikaixinxin/RQFormer) |
 | [HERO <br>(AAAI'2026)](./projects/HERO/README.md) | [O2-RTDETR<br>(TGRS' 2026)](./projects/rotated_rtdetr/README.md)  |     |     |
 </details>
 
