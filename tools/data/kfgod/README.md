@@ -3,9 +3,9 @@
 >[KFGOD: A Fine-Grained Object Detection Dataset in KOMPSAT Satellite Imagery](https://www.mdpi.com/2072-4292/17/22/3774)
 
 
-## Download CODrone dataset
+## Download KFGOD dataset
 
-The CODrone dataset can be downloaded from [dataon](https://doi.org/10.22711/idr/1101).
+The KFGOD dataset can be downloaded from [dataon](https://doi.org/10.22711/idr/1101).
 
 
 
@@ -29,7 +29,7 @@ ai4rs
 In train set, images `OBJ00209_PS3_K3_AIDATA0601`, `OBJ01530_PS3_K3A_AIDATA0638`, and `OBJ01735_PS3_K3_AIDATA0009` have no annotation files.  
 In val set, image `OBJ01677_PS3_K3A_AIDATA0145` has no annotation files.
 
-## Classes of CODrone
+## Classes of KFGOD
 
 The 33 classes.
 
