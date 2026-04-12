@@ -5,7 +5,7 @@
 
 ## Download KFGOD dataset
 
-The KFGOD dataset can be downloaded from [dataon](https://doi.org/10.22711/idr/1101).
+The KFGOD dataset can be downloaded from [dataon](https://doi.org/10.22711/idr/1101) or [huggingface](https://huggingface.co/datasets/ohhan777/kfgod).
 
 
 
