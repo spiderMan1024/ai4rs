@@ -40,7 +40,7 @@ We hope to integrate remote sensing related work based on **MMLab**, especially 
 |     |     |     |     |
 | :---: | :---: | :---: | :---: |
 |[Rotated YOLOX (arXiv 2021)](./projects/rotated_yolox/README.md) |[RTMDet (arXiv 2022)](configs/rotated_rtmdet/README.md)  |  [Rotated YOLOMS (TPAMI 2025)](./projects/rotated_yoloms/README.md)    |  [RTDETR (CVPR' 2024)](./projects/rtdetr/README.md)   |
-|  [O2-RTDETR (TGRS 2026)](./projects/rotated_rtdetr/README.md)   |     |     |     |
+|  [O2-RTDETR (TGRS 2026)](./projects/rotated_rtdetr/README.md)   | [rtdetr-mmdet](https://github.com/flytocc/rtdetr-mmdet) |     |     |
 
 </details>
 
@@ -348,15 +348,19 @@ Please refer to [FAQ](https://github.com/open-mmlab/mmrotate/blob/1.x/docs/en/no
 
 ## Acknowledgement 🙏
 
-[OpenMMLab](https://openmmlab.com)
+|     |     |     |     |
+| :---: | :---: | :---: | :---: |
+| [OpenMMLab](https://openmmlab.com) | [OpenMMLab platform](https://platform.openmmlab.com) |  [MMDetection](https://github.com/open-mmlab/mmdetection)   | [MMRotate](https://github.com/open-mmlab/MMRotate) |
+|  [open-cd](https://github.com/likyoo/open-cd) |     |     |     |
 
-[OpenMMLab platform](https://platform.openmmlab.com)
 
-[MMDetection](https://github.com/open-mmlab/mmdetection)
 
-[MMRotate](https://github.com/open-mmlab/MMRotate)
 
-[open-cd](https://github.com/likyoo/open-cd)
+
+
+
+
+
 
 ## Citation 🌟
 
