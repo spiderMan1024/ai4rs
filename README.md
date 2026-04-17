@@ -351,7 +351,7 @@ Please refer to [FAQ](https://github.com/open-mmlab/mmrotate/blob/1.x/docs/en/no
 |     |     |     |     |
 | :---: | :---: | :---: | :---: |
 | [OpenMMLab](https://openmmlab.com) | [OpenMMLab platform](https://platform.openmmlab.com) |  [MMDetection](https://github.com/open-mmlab/mmdetection)   | [MMRotate](https://github.com/open-mmlab/MMRotate) |
-|  [open-cd](https://github.com/likyoo/open-cd) |     |     |     |
+|  [open-cd](https://github.com/likyoo/open-cd) |   [rtdetr-mmdet](https://github.com/flytocc/rtdetr-mmdet)  |     |     |
 
 
 
