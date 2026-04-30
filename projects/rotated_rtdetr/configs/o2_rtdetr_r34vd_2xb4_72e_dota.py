@@ -39,3 +39,27 @@ custom_keys.update({
 optim_wrapper.paramwise_cfg.pop('custom_keys')
 optim_wrapper.update(
     paramwise_cfg=dict(custom_keys=dict(**custom_keys)))
+
+# -------------------------------
+# GQML + CGAS
+# -------------------------------
+model['bbox_head'].update(
+    use_gqml=True,
+    use_cgas=True,
+    gqml_riou_weight=0.5,
+    gqml_chamfer_weight=0.3,
+    gqml_angle_weight=0.2,
+    cgas_loss_weight=0.2
+)
+
+model['bbox_head']['loss_cls']['varifocal_loss_iou_type'] = 'gqml'
+
+# single GPU setting
+train_dataloader.update(batch_size=8)
+
+# save checkpoint every 5 epochs
+default_hooks['checkpoint'].update(
+    interval=5,
+    save_last=True,
+    max_keep_ckpts=99999
+)

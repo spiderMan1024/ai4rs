@@ -21,9 +21,24 @@ class RotatedRTDETRHead(RotatedDINOHead):
     <https://arxiv.org/abs/2304.08069>`_ .
     """
     def __init__(self,
-                 *args,
-                 **kwargs):
+             *args,
+             **kwargs):
+        # GQML / CGAS switches
+        self.use_gqml = kwargs.pop('use_gqml', False)
+        self.use_cgas = kwargs.pop('use_cgas', False)
+
+        # weights for Geometry Quality-aware target
+        self.gqml_riou_weight = kwargs.pop('gqml_riou_weight', 0.5)
+        self.gqml_chamfer_weight = kwargs.pop('gqml_chamfer_weight', 0.3)
+        self.gqml_angle_weight = kwargs.pop('gqml_angle_weight', 0.2)
+
+        # weight for Corner-guided Auxiliary Supervision
+        self.cgas_loss_weight = kwargs.pop('cgas_loss_weight', 0.2)
+
         self.varifocal_loss_iou_type = kwargs['loss_cls'].pop('varifocal_loss_iou_type')
+
+        if self.use_gqml:
+            self.varifocal_loss_iou_type = 'gqml'
         super(RotatedRTDETRHead, self).__init__(*args, **kwargs)
 
     def forward(self, hidden_states: List[Tuple[int, Tensor]],
@@ -77,6 +92,111 @@ class RotatedRTDETRHead(RotatedDINOHead):
         return (all_layers_matching_cls_scores, all_layers_matching_bbox_preds,
                 all_layers_denoising_cls_scores,
                 all_layers_denoising_bbox_preds)
+
+    def _rbox_to_corners(self, boxes: Tensor) -> Tensor:
+        """Convert rotated boxes (cx, cy, w, h, theta) to four corners.
+
+        Args:
+            boxes (Tensor): shape (N, 5), in pixel coordinate.
+
+        Returns:
+            Tensor: shape (N, 4, 2).
+        """
+        cx, cy, w, h, theta = boxes.unbind(dim=-1)
+
+        cos_t = torch.cos(theta)
+        sin_t = torch.sin(theta)
+
+        wx = w / 2 * cos_t
+        wy = w / 2 * sin_t
+        hx = -h / 2 * sin_t
+        hy = h / 2 * cos_t
+
+        p1 = torch.stack([cx - wx - hx, cy - wy - hy], dim=-1)
+        p2 = torch.stack([cx + wx - hx, cy + wy - hy], dim=-1)
+        p3 = torch.stack([cx + wx + hx, cy + wy + hy], dim=-1)
+        p4 = torch.stack([cx - wx + hx, cy - wy + hy], dim=-1)
+
+        return torch.stack([p1, p2, p3, p4], dim=1)
+
+
+    def _aligned_chamfer(self, pred_boxes: Tensor, target_boxes: Tensor) -> Tensor:
+        """Aligned Chamfer distance between predicted and target rotated boxes.
+
+        Args:
+            pred_boxes (Tensor): shape (N, 5), pixel coordinate.
+            target_boxes (Tensor): shape (N, 5), pixel coordinate.
+
+        Returns:
+            Tensor: shape (N,), normalized Chamfer distance.
+        """
+        pred_pts = self._rbox_to_corners(pred_boxes)
+        target_pts = self._rbox_to_corners(target_boxes)
+
+        # (N, 4, 4)
+        dist = torch.cdist(pred_pts, target_pts, p=2).pow(2)
+
+        chamfer = dist.min(dim=2)[0].mean(dim=1) + \
+            dist.min(dim=1)[0].mean(dim=1)
+
+        # normalize by gt box scale to avoid large-value domination
+        norm = target_boxes[:, 2].clamp(min=1.0).pow(2) + \
+            target_boxes[:, 3].clamp(min=1.0).pow(2)
+
+        return chamfer / norm
+
+
+    def _geometry_quality(self, pred_boxes: Tensor, target_boxes: Tensor) -> Tensor:
+        """Geometry quality target for VarifocalLoss.
+
+        Quality = weighted combination of RIoU, Chamfer quality and angle similarity.
+        Args:
+            pred_boxes (Tensor): shape (N, 5), pixel coordinate.
+            target_boxes (Tensor): shape (N, 5), pixel coordinate.
+
+        Returns:
+            Tensor: shape (N,), range [0, 1].
+        """
+        if pred_boxes.numel() == 0:
+            return pred_boxes.new_zeros((0,))
+
+        # rotated IoU quality
+        riou = rbbox_overlaps(
+            pred_boxes.detach(),
+            target_boxes,
+            is_aligned=True).clamp(min=0.0, max=1.0)
+
+        # vertex Chamfer quality
+        chamfer = self._aligned_chamfer(
+            pred_boxes.detach(),
+            target_boxes).clamp(min=0.0)
+        chamfer_quality = torch.exp(-chamfer).clamp(min=0.0, max=1.0)
+
+        # angle similarity, pi-periodic
+        angle_sim = torch.cos(
+            pred_boxes[:, 4].detach() - target_boxes[:, 4]).abs()
+        angle_sim = angle_sim.clamp(min=0.0, max=1.0)
+
+        weight_sum = self.gqml_riou_weight + \
+            self.gqml_chamfer_weight + self.gqml_angle_weight
+
+        quality = (
+            self.gqml_riou_weight * riou +
+            self.gqml_chamfer_weight * chamfer_quality +
+            self.gqml_angle_weight * angle_sim
+        ) / max(weight_sum, 1e-6)
+
+        return quality.detach().clamp(min=0.0, max=1.0)
+
+
+    def _corner_aux_loss(self, pred_boxes: Tensor, target_boxes: Tensor,
+                        avg_factor: float) -> Tensor:
+        """Corner-guided auxiliary supervision loss."""
+        if pred_boxes.numel() == 0:
+            return pred_boxes.sum() * 0.0
+
+        chamfer = self._aligned_chamfer(pred_boxes, target_boxes)
+        return chamfer.sum() / max(float(avg_factor), 1.0)
 
     def _loss_dn_single(self, dn_cls_scores: Tensor, dn_bbox_preds: Tensor,
                         batch_gt_instances: InstanceList,
@@ -166,6 +286,23 @@ class RotatedRTDETRHead(RotatedDINOHead):
                     cls_iou_targets[pos_inds, pos_labels] = probiou(
                         pos_decode_bbox_pred.detach(),
                         pos_decode_bbox_targets)[:, 0]
+                elif self.varifocal_loss_iou_type == 'gqml':
+                    img_h, img_w = batch_img_metas[0]['img_shape']
+                    factor = torch.tensor(
+                        [img_w, img_h, img_w, img_h, self.angle_factor],
+                        device=pos_inds.device)
+
+                    pos_bbox_targets = bbox_targets[pos_inds]
+                    pos_decode_bbox_targets = pos_bbox_targets * factor
+
+                    pos_bbox_pred = dn_bbox_preds.reshape(-1, 5)[pos_inds]
+                    pos_decode_bbox_pred = pos_bbox_pred * factor
+
+                    pos_labels = labels[pos_inds]
+
+                    cls_iou_targets[pos_inds, pos_labels] = self._geometry_quality(
+                        pos_decode_bbox_pred,
+                        pos_decode_bbox_targets)
                 else:
                     raise NotImplementedError
                 loss_cls = self.loss_cls(
@@ -205,6 +342,16 @@ class RotatedRTDETRHead(RotatedDINOHead):
         # regression IoU loss, defaultly GIoU loss
         loss_iou = self.loss_iou(
             bboxes, bboxes_gt, bbox_weights, avg_factor=num_total_pos)
+
+        # CGAS: corner-guided auxiliary supervision
+        if self.use_cgas:
+            pos_mask = bbox_weights.sum(dim=-1) > 0
+            if pos_mask.any():
+                loss_corner = self._corner_aux_loss(
+                    bboxes[pos_mask],
+                    bboxes_gt[pos_mask],
+                    avg_factor=num_total_pos)
+                loss_iou = loss_iou + self.cgas_loss_weight * loss_corner
 
         # regression L1 loss
         loss_bbox = self.loss_bbox(
@@ -295,6 +442,23 @@ class RotatedRTDETRHead(RotatedDINOHead):
                 cls_iou_targets[pos_inds, pos_labels] = probiou(
                     pos_decode_bbox_pred.detach(),
                     pos_decode_bbox_targets)[:, 0]
+            elif self.varifocal_loss_iou_type == 'gqml':
+                img_h, img_w, = batch_img_metas[0]['img_shape']
+                factor = torch.tensor(
+                    [img_w, img_h, img_w, img_h, self.angle_factor],
+                    device=pos_inds.device)
+
+                pos_bbox_targets = bbox_targets[pos_inds]
+                pos_decode_bbox_targets = pos_bbox_targets * factor
+
+                pos_bbox_pred = bbox_preds.reshape(-1, 5)[pos_inds]
+                pos_decode_bbox_pred = pos_bbox_pred * factor
+
+                pos_labels = labels[pos_inds]
+
+                cls_iou_targets[pos_inds, pos_labels] = self._geometry_quality(
+                    pos_decode_bbox_pred,
+                    pos_decode_bbox_targets)
             else:
                 raise NotImplementedError
             loss_cls = self.loss_cls(
@@ -328,6 +492,16 @@ class RotatedRTDETRHead(RotatedDINOHead):
         # regression IoU loss, defaultly GIoU loss
         loss_iou = self.loss_iou(
             bboxes, bboxes_gt, bbox_weights, avg_factor=num_total_pos)
+
+        # CGAS: corner-guided auxiliary supervision
+        if self.use_cgas:
+            pos_mask = bbox_weights.sum(dim=-1) > 0
+            if pos_mask.any():
+                loss_corner = self._corner_aux_loss(
+                    bboxes[pos_mask],
+                    bboxes_gt[pos_mask],
+                    avg_factor=num_total_pos)
+                loss_iou = loss_iou + self.cgas_loss_weight * loss_corner
 
         # regression L1 loss
         loss_bbox = self.loss_bbox(

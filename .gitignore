@@ -125,3 +125,47 @@ tmp
 
 # custom
 mmrotate/.mim
+
+data/
+work_dirs/
+outputs/
+runs/
+logs/
+
+*.pth
+*.pt
+*.onnx
+*.engine
+*.ckpt
+
+Task1/
+Task1.zip
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
+
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.vscode/
+.DS_Store
+
+# model weights
+*.pth
+*.pt
+*.ckpt
+*.onnx
+*.engine
+
+# training outputs and datasets
+data/
+work_dirs/
+Task1/
+Task1.zip
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
