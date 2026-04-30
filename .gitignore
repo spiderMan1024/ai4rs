@@ -169,3 +169,13 @@ Task1.zip
 *.tar.gz
 *.rar
 *.7z
+
+data/DOTA/
+data/split_ss_dota/
+work_dirs/
+*.pth
+*.pt
+*.ckpt
+*.onnx
+*.engine
+Task1.zip
