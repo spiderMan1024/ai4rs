@@ -41,18 +41,27 @@ optim_wrapper.update(
     paramwise_cfg=dict(custom_keys=dict(**custom_keys)))
 
 # -------------------------------
-# GQML + CGAS
+# SA-CGAS only, lightweight version
 # -------------------------------
 model['bbox_head'].update(
-    use_gqml=True,
+    use_gqml=False,
     use_cgas=True,
+    use_sa_cgas=True,
+
+    # GQML is disabled, these weights are reserved for later experiments.
     gqml_riou_weight=0.5,
     gqml_chamfer_weight=0.3,
     gqml_angle_weight=0.2,
-    cgas_loss_weight=0.2
+
+    # SA-CGAS
+    cgas_loss_weight=0.05,
+    sa_cgas_alpha=4.0,
+    sa_cgas_tau=1.5,
+    sa_cgas_min_weight=0.2
 )
 
-model['bbox_head']['loss_cls']['varifocal_loss_iou_type'] = 'gqml'
+# Keep original VarifocalLoss quality target.
+model['bbox_head']['loss_cls']['varifocal_loss_iou_type'] = 'hbox_iou'
 
 # single GPU setting
 train_dataloader.update(batch_size=8)

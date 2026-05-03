@@ -27,6 +27,12 @@ class RotatedRTDETRHead(RotatedDINOHead):
         self.use_gqml = kwargs.pop('use_gqml', False)
         self.use_cgas = kwargs.pop('use_cgas', False)
 
+        # SA-CGAS switches
+        self.use_sa_cgas = kwargs.pop('use_sa_cgas', False)
+        self.sa_cgas_alpha = kwargs.pop('sa_cgas_alpha', 4.0)
+        self.sa_cgas_tau = kwargs.pop('sa_cgas_tau', 1.5)
+        self.sa_cgas_min_weight = kwargs.pop('sa_cgas_min_weight', 0.2)
+
         # weights for Geometry Quality-aware target
         self.gqml_riou_weight = kwargs.pop('gqml_riou_weight', 0.5)
         self.gqml_chamfer_weight = kwargs.pop('gqml_chamfer_weight', 0.3)
@@ -144,6 +150,35 @@ class RotatedRTDETRHead(RotatedDINOHead):
             target_boxes[:, 3].clamp(min=1.0).pow(2)
 
         return chamfer / norm
+    
+    def _shape_aware_corner_weight(self, target_boxes: Tensor) -> Tensor:
+        """Compute shape-aware weights for SA-CGAS.
+
+        Args:
+            target_boxes (Tensor): shape (N, 5), pixel coordinate.
+
+        Returns:
+            Tensor: shape (N,), range [sa_cgas_min_weight, 1].
+        """
+        if target_boxes.numel() == 0:
+            return target_boxes.new_zeros((0,))
+
+        w = target_boxes[:, 2].clamp(min=1.0)
+        h = target_boxes[:, 3].clamp(min=1.0)
+
+        ratio = torch.maximum(w, h) / torch.minimum(w, h).clamp(min=1.0)
+
+        shape_weight = torch.sigmoid(
+            self.sa_cgas_alpha * (ratio - self.sa_cgas_tau)
+        )
+
+        shape_weight = self.sa_cgas_min_weight + \
+            (1.0 - self.sa_cgas_min_weight) * shape_weight
+
+        return shape_weight.detach().clamp(
+            min=self.sa_cgas_min_weight,
+            max=1.0
+        )
 
 
     def _geometry_quality(self, pred_boxes: Tensor, target_boxes: Tensor) -> Tensor:
@@ -190,12 +225,21 @@ class RotatedRTDETRHead(RotatedDINOHead):
 
 
     def _corner_aux_loss(self, pred_boxes: Tensor, target_boxes: Tensor,
-                        avg_factor: float) -> Tensor:
-        """Corner-guided auxiliary supervision loss."""
+                     avg_factor: float) -> Tensor:
+        """Corner-guided auxiliary supervision loss.
+
+        If use_sa_cgas=True, apply shape-aware weights to reduce excessive
+        corner constraints for near-square objects.
+        """
         if pred_boxes.numel() == 0:
             return pred_boxes.sum() * 0.0
 
         chamfer = self._aligned_chamfer(pred_boxes, target_boxes)
+
+        if self.use_sa_cgas:
+            shape_weight = self._shape_aware_corner_weight(target_boxes)
+            chamfer = chamfer * shape_weight
+
         return chamfer.sum() / max(float(avg_factor), 1.0)
 
     def _loss_dn_single(self, dn_cls_scores: Tensor, dn_bbox_preds: Tensor,
@@ -344,14 +388,14 @@ class RotatedRTDETRHead(RotatedDINOHead):
             bboxes, bboxes_gt, bbox_weights, avg_factor=num_total_pos)
 
         # CGAS: corner-guided auxiliary supervision
-        if self.use_cgas:
-            pos_mask = bbox_weights.sum(dim=-1) > 0
-            if pos_mask.any():
-                loss_corner = self._corner_aux_loss(
-                    bboxes[pos_mask],
-                    bboxes_gt[pos_mask],
-                    avg_factor=num_total_pos)
-                loss_iou = loss_iou + self.cgas_loss_weight * loss_corner
+        # if self.use_cgas:
+        #     pos_mask = bbox_weights.sum(dim=-1) > 0
+        #     if pos_mask.any():
+        #         loss_corner = self._corner_aux_loss(
+        #             bboxes[pos_mask],
+        #             bboxes_gt[pos_mask],
+        #             avg_factor=num_total_pos)
+        #         loss_iou = loss_iou + self.cgas_loss_weight * loss_corner
 
         # regression L1 loss
         loss_bbox = self.loss_bbox(
